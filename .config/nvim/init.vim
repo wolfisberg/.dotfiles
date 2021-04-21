@@ -85,7 +85,7 @@ function! FernInit() abort
   nmap <buffer> l <Plug>(fern-action-open-or-expand)
   nmap <buffer> <nowait> < <Plug>(fern-action-leave)
   nmap <buffer> <nowait> > <Plug>(fern-action-enter)
-  nmap <buffer> <nowait> . <Plug>(fern-action-hidden:toggle)
+  nmap <buffer> zh <Plug>(fern-action-hidden:toggle)
   nmap <buffer> F <Plug>(fern-action-grep)
 
   nmap <buffer> s <Plug>(fern-action-open:split)
