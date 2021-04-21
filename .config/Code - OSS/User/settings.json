@@ -1,0 +1,20 @@
+{
+    "workbench.colorTheme": "Tokyo Night Storm",
+    "keyboard.dispatch": "keyCode",
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true,
+    "editor.lineNumbers": "relative",
+    "workbench.colorCustomizations": {
+        "editorLineNumber.activeForeground": "#cccc33",
+        "editorLineNumber.foreground": "#bbbbbb"
+    },
+    "workbench.tree.indent": 24,
+    "workbench.tree.renderIndentGuides": "always",
+    "workbench.activityBar.visible": false,
+    "editor.fontSize": 13,
+    "editor.minimap.enabled": false,
+    "window.menuBarVisibility": "toggle",
+    "window.zoomLevel": 1,
+    "window.restoreWindows": "none"
+}

@@ -1,0 +1,8 @@
+gui:
+  scrollHeight: 8
+  scrollPastBottom: false
+git:
+  pull:
+    mode: rebase
+quitOnTopLevelReturn: false
+

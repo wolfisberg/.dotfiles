@@ -1,0 +1,4 @@
+clear lock
+keycode 66 = Escape NoSymbol NoSymbol NoSymbol
+keycode 9 = Caps_Lock Menu NoSymbol
+
