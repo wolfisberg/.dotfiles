@@ -3,7 +3,7 @@
 ## Keyboard
 
 ### KDE shortcuts
-See [kayboard schema file](../kde_shortcuts.kksc).
+See [kayboard schema file](../kde_shortcuts.kksrc).
 
 ### Custom shortcuts
 Program | Shortcut | Action
