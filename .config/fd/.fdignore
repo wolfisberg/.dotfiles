@@ -1,7 +1,3 @@
-**/Glacier/data*
-**/go/pkg/
-**/go/bin/
-**/Gdrive/
 **/.cache/
 **/.cfg/
 **/.dotfiles/
