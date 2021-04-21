@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/kaspar/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -90,7 +90,7 @@ source $ZSH/oh-my-zsh.sh
 
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
-source /home/kaspar/.config/broot/launcher/bash/br
+source $HOME/.config/broot/launcher/bash/br
 
 
 function fman() {
@@ -103,12 +103,12 @@ eval "$(pyenv init -)"
 
 alias la='ls -la --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
 alias ll='ls -l --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
-alias config='/usr/bin/git --git-dir=/home/kaspar/.dotfiles/ --work-tree=/home/kaspar'
-alias confg='lazygit --work-tree=/home/kaspar --git-dir=/home/kaspar/.dotfiles'
+alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias confg="lazygit --work-tree=$HOME --git-dir=$HOME/.dotfiles"
 alias finstall="pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
 alias fremove="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns"
 alias bat='bat --paging always'
-alias pdf="fd --type f '.*.pdf.*' '/home/kaspar' | fzf --preview-window=hidden -i -e | xargs -I {} okular {}"
+alias pdf="fd --type f '.*.pdf.*' $HOME | fzf --preview-window=hidden -i -e | xargs -I {} okular {}"
 alias ranger='source ranger'
 alias prp='poetry run python'
 alias lg='lazygit'
@@ -123,8 +123,8 @@ export VISUAL=/usr/bin/vim
 export BROWSER=/usr/bin/firefox-developer-edition
 export FZF_DEFAULT_OPTS="-i --exact --preview '([ -f {} ] && (bat --color=always --style=plain,header,grid {} | head -300)) || ([ -d {} ] && (tree -C {} | less)) || echo {} 2> /dev/null | head -300'"
 export FZF_DEFAULT_COMMAND='fd --hidden'
-export FZF_ALT_C_COMMAND="fd --type d --hidden --exclude '.git' --exclude '.cfg' --exclude 'Gdrive' --exclude '/mnt' --exclude '/media' --exclude '/run' . ."
-export FZF_CTRL_T_COMMAND="fd --hidden --exclude '.git' --exclude '/Gdrive' --exclude '/Glacier' . '/'"
+export FZF_ALT_C_COMMAND="fd --type d --hidden --exclude '.git' --exclude '.cfg' --exclude '.dotfiles' --exclude 'Gdrive' --exclude '/mnt' --exclude '/media' --exclude '/run' . ."
+export FZF_CTRL_T_COMMAND="fd --hidden --exclude '.git' --exclude '.dotfiles' --exclude '/Gdrive' --exclude '/Glacier' . '/'"
 export TERM="xterm-256color"
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 export MANPAGER="sh -c 'col -bx | bat -l man -p --paging always'"
