@@ -68,55 +68,67 @@ let g:fzf_action = {'ctrl-t': 'tab split', 'ctrl-s': 'split', 'ctrl-v': 'vsplit'
 nnoremap <leader>ff :call fzf#run(fzf#wrap({
     \ 'source': 'fd --ignore-file "$HOME/.config/fd/.fdignore" . .'}))<CR>
 nnoremap <leader>fh :call fzf#run(fzf#wrap({
-    \ 'source': 'fd --hidden --ignore-file "$HOME/.config/fd/.fdignore" . "/home/kaspar/"'}))<CR>
+    \ 'source': 'fd --hidden --ignore-file "$HOME/.config/fd/.fdignore" . "$HOME"'}))<CR>
 
 " FERN 
 let g:fern#disable_default_mappings   = 1
-let g:fern#disable_drawer_auto_quit   = 0
 let g:fern#disable_viewer_hide_cursor = 1
-nnoremap <silent> <Leader>d :Fern . -drawer -width=40 -toggle<CR><C-w>=
+nnoremap <silent> <Leader>d :Fern . -drawer -width=40 -toggle -reveal=%<CR><C-w>=
 
 function! FernInit() abort
-  nmap <buffer> ? <Plug>(fern-action-help)
-  nmap <buffer> <C-C> <Plug>(fern-action-cancel)
-  nmap <buffer> <F5> <Plug>(fern-action-reload)
+    nmap <buffer> ? <Plug>(fern-action-help)
+    nmap <buffer> <C-C> <Plug>(fern-action-cancel)
+    nmap <buffer> <F5> <Plug>(fern-action-reload)
 
-  nmap <buffer> h <Plug>(fern-action-collapse)
-  nmap <buffer> l <Plug>(fern-action-open-or-expand)
-  nmap <buffer> <nowait> < <Plug>(fern-action-leave)
-  nmap <buffer> <nowait> > <Plug>(fern-action-enter)
-  nmap <buffer> zh <Plug>(fern-action-hidden:toggle)
-  nmap <buffer> F <Plug>(fern-action-grep)
+    nmap <buffer> h <Plug>(fern-action-collapse)
+    "nmap <buffer> l <Plug>(fern-action-open-or-expand)
+    nmap <buffer> <nowait> < <Plug>(fern-action-leave)
+    nmap <buffer> <nowait> > <Plug>(fern-action-enter)
+    nmap <buffer> zh <Plug>(fern-action-hidden:toggle)
+    nmap <buffer> F <Plug>(fern-action-grep)
 
-  nmap <buffer> s <Plug>(fern-action-open:split)
-  nmap <buffer> v <Plug>(fern-action-open:vsplit)
-  nmap <buffer> t <Plug>(fern-action-open:tabedit)
-  nmap <buffer> S <Plug>(fern-action-open:system)
+    nmap <buffer> s <Plug>(fern-action-open:split)
+    nmap <buffer> v <Plug>(fern-action-open:vsplit)
+    nmap <buffer> t <Plug>(fern-action-open:tabedit)
+    nmap <buffer> S <Plug>(fern-action-open:system)
 
-  nmap <buffer> M <Plug>(fern-action-clipboard-move)
-  nmap <buffer> C <Plug>(fern-action-clipboard-copy)
-  nmap <buffer> P <Plug>(fern-action-clipboard-paste)
+    nmap <buffer> M <Plug>(fern-action-clipboard-move)
+    nmap <buffer> C <Plug>(fern-action-clipboard-copy)
+    nmap <buffer> P <Plug>(fern-action-clipboard-paste)
 
-  nmap <buffer> cp <Plug>(fern-action-copy)
-  nmap <buffer> mv <Plug>(fern-action-move)
-  nmap <buffer> rn <Plug>(fern-action-rename)
-  nmap <buffer> rm <Plug>(fern-action-remove)
-  nmap <buffer> mf <Plug>(fern-action-new-file)
-  nmap <buffer> md <Plug>(fern-action-new-dir)
+    nmap <buffer> cp <Plug>(fern-action-copy)
+    nmap <buffer> mv <Plug>(fern-action-move)
+    nmap <buffer> rn <Plug>(fern-action-rename)
+    nmap <buffer> rm <Plug>(fern-action-remove)
+    nmap <buffer> mf <Plug>(fern-action-new-file)
+    nmap <buffer> md <Plug>(fern-action-new-dir)
 
-  nmap <buffer> x <Plug>(fern-action-mark:toggle)
+    nmap <buffer> x <Plug>(fern-action-mark:toggle)
 
-  nmap <buffer><expr>
+    nmap <buffer><expr>
         \ <Plug>(fern-my-preview-or-nop)
         \ fern#smart#leaf(
         \   "\<Plug>(fern-action-open:edit)\<C-w>p",
         \   "",
         \ )
-  nmap <buffer> w <Plug>(fern-my-preview-or-nop)
+    nmap <buffer> w <Plug>(fern-my-preview-or-nop)
+
+
+    nnoremap <Plug>(fern-close-drawer) :<C-U>FernDo close -drawer -stay<CR>
+    nmap <buffer><silent><Plug>(fern-action-open-and-close)
+        \ <Plug>(fern-action-open)
+        \ <Plug>(fern-close-drawer)
+    nmap <buffer><expr>
+        \ <Plug>(fern-my-open-and-close-or-expand)
+        \ fern#smart#leaf(
+        \   "\<Plug>(fern-action-open-and-close)",
+        \   "\<Plug>(fern-action-expand)",
+        \ )
+    nmap <buffer> l <Plug>(fern-my-open-and-close-or-expand)
 endfunction
 
 augroup FernEvents
-  autocmd!
-  autocmd FileType fern call FernInit()
+    autocmd!
+    autocmd FileType fern call FernInit()
 augroup END
 
