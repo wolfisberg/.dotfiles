@@ -24,46 +24,67 @@ set hlsearch
 set ignorecase
 set smartcase
 set incsearch
-map <leader>h :noh<CR>
+map <leader>h       :noh<CR>
 
 " NAVIGATION
-map <C-D> <S-M><C-D>
-map <C-U> <S-M><C-U>
-map <C-O> <Action>(Back)
-map <C-I> <Action>(Forward)
+map <C-D>           <S-M><C-D>
+map <C-U>           <S-M><C-U>
+map <C-O>           <Action>(Back)
+map <C-I>           <Action>(Forward)
 
 " SPLITS/TABS
 set splitbelow
 set splitright
-map <C-L> <C-W><C-L>
-map <C-H> <C-W><C-H>
-map <C-PageDown> <Action>(NextTab)
-map <C-PageUp> <Action>(PreviousTab)
+map <C-L>           <C-W><C-L>
+map <C-H>           <C-W><C-H>
+map <C-PageDown>    <Action>(NextTab)
+map <C-PageUp>      <Action>(PreviousTab)
 
 " CODE NAVIGATION
-map <leader>o <Action>(FileStructurePopup)
-map <C-S-d> <Action>(GotoDeclaration)
-map <leader>gt <Action>(GotoTypeDeclaration)
-map <leader>gu <Action>(FindUsages)
-map <C-S-u> <Action>(ShowUsages)
-map <leader>gI <Action>(QuickImplementations)
-map <leader>gi <Action>(GotoImplementation)
-map g, <Action>(JumpToNextChange)
-map g; <Action>(JumpToLastChange)
-map <leader>e <Action>(GotoNextError)
-map <leader>E <Action>(GotoPreviousError)
+map <leader>o       <Action>(FileStructurePopup)
+map <C-S-d>         <Action>(GotoDeclaration)
+map <leader>gd      <Action>(GotoDeclaration)
+map <leader>gt      <Action>(GotoTypeDeclaration)
+map <leader>gu      <Action>(FindUsages)
+map <C-S-u>         <Action>(ShowUsages)
+map <leader>gi      <Action>(GotoImplementation)
+map g,              <Action>(JumpToNextChange)
+map g;              <Action>(JumpToLastChange)
+map <F2>            <Action>(GotoNextError)
+map <F14>           <Action>(GotoPreviousError)
+
+" QUICK PREVIEWS
+map <leader>qi      <Action>(QuickImplementations)
+map <leader>qt      <Action>(QuickTypeDefinition)
+map <leader>qd      <Action>(QuickJavaDoc)
+
+" REFACTORING
+map <leader>rm      <Action>(Refactorings.QuickListPopupAction)
+map <leader>rn      <Action>(RefactoringMenu)
+map <leader>rr      <Action>(RenameElement)
 
 " PROJECT NAVIGATION
-map <leader>fe <Action>(SearchEverywhere)
-map <leader>fa <Action>(GotoAction)
-map <leader>ff <Action>(GotoFile)
-map <leader>fc <Action>(GotoClass)
-map <leader>fs <Action>(GotoSymbol)
+map <leader>fe      <Action>(SearchEverywhere)
+map <leader>fa      <Action>(GotoAction)
+map <leader>ff      <Action>(GotoFile)
+map <leader>fc      <Action>(GotoClass)
+map <leader>fs      <Action>(GotoSymbol)
+map <leader>rf      <Action>(RecentFiles)
+map <leader>rl      <Action>(RecentLocations)
+map <leader>rcf     <Action>(RecentChangedFiles)
+
+" TOOL WINDOWS
+map <leader>wp      <Action>(ActivateProjectToolWindow)
+map <leader>wd      <Action>(ActivateDebugToolWindow)
+map <leader>wt      <Action>(ActivateTODOToolWindow)
+map <leader>wf      <Action>(ActivateFindToolWindow)
+map <leader>wy      <Action>(ActivatePythonConsoleToolWindow)
 
 " DEBUGGING
-map <leader>ds <Action>(Stop)
-map <leader>dd <Action>(Debug)
-map <leader>dr <Action>(Run)
-map <leader>dcd <Action>(ChooseDebugConfiguration)
-map <leader>dcr <Action>(ChooseRunConfiguration)
+map <leader>ds      <Action>(Stop)
+map <leader>dd      <Action>(Debug)
+map <leader>dr      <Action>(Run)
+map <leader>dcd     <Action>(ChooseDebugConfiguration)
+map <leader>dcr     <Action>(ChooseRunConfiguration)
+map <leader>de      <Action>(EvaluateExpression)
 
