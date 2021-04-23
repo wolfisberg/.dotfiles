@@ -1,0 +1,39 @@
+" See available commands with
+" :actionlist <search>
+
+let mapleader = " "
+
+" GENERAL
+set noerrorbells
+set number
+set relativenumber
+
+" SEARCH
+set showmatch
+set hlsearch
+set ignorecase
+set smartcase
+set incsearch
+map <leader>h :noh<CR>
+
+" NAVIGATION
+map <C-D> <S-M><C-D>
+map <C-U> <S-M><C-U>
+map <C-O> <Action>(Back)
+map <C-I> <Action>(Forward)
+map g, <Action>(JumpToNextChange)
+map g; <Action>(JumpToLastChange)
+
+" SPLITS/TABS
+set splitbelow
+set splitright
+map <C-L> <C-W><C-L>
+map <C-H> <C-W><C-H>
+map <C-PageDown> <Action>(NextTab)
+map <C-PageUp> <Action>(PreviousTab)
+
+" IDE
+map <leader>o <Action>(FileStructurePopup)
+map <leader>gd <Action>(GotoDeclaration)
+map <leader>gD <Action>(GotoTypeDeclaration)
+
