@@ -1,5 +1,15 @@
 " See available commands with
-" :actionlist <search>
+"   :actionlist <search>
+"
+" Check conflicting keybinds under
+"   Settings -> Editor -> Vim-Emulation
+"
+" Keybinds to set in the IDE
+"   <C-K>/<C-P> => <Up>
+"   <C-J>/<C-N> => <Down>
+"
+" Improvements
+"   <C-N>/<C-P> don't work in structure popup when filtered
 
 let mapleader = " "
 
@@ -21,8 +31,6 @@ map <C-D> <S-M><C-D>
 map <C-U> <S-M><C-U>
 map <C-O> <Action>(Back)
 map <C-I> <Action>(Forward)
-map g, <Action>(JumpToNextChange)
-map g; <Action>(JumpToLastChange)
 
 " SPLITS/TABS
 set splitbelow
@@ -32,8 +40,30 @@ map <C-H> <C-W><C-H>
 map <C-PageDown> <Action>(NextTab)
 map <C-PageUp> <Action>(PreviousTab)
 
-" IDE
+" CODE NAVIGATION
 map <leader>o <Action>(FileStructurePopup)
-map <leader>gd <Action>(GotoDeclaration)
-map <leader>gD <Action>(GotoTypeDeclaration)
+map <C-S-d> <Action>(GotoDeclaration)
+map <leader>gt <Action>(GotoTypeDeclaration)
+map <leader>gu <Action>(FindUsages)
+map <C-S-u> <Action>(ShowUsages)
+map <leader>gI <Action>(QuickImplementations)
+map <leader>gi <Action>(GotoImplementation)
+map g, <Action>(JumpToNextChange)
+map g; <Action>(JumpToLastChange)
+map <leader>e <Action>(GotoNextError)
+map <leader>E <Action>(GotoPreviousError)
+
+" PROJECT NAVIGATION
+map <leader>fe <Action>(SearchEverywhere)
+map <leader>fa <Action>(GotoAction)
+map <leader>ff <Action>(GotoFile)
+map <leader>fc <Action>(GotoClass)
+map <leader>fs <Action>(GotoSymbol)
+
+" DEBUGGING
+map <leader>ds <Action>(Stop)
+map <leader>dd <Action>(Debug)
+map <leader>dr <Action>(Run)
+map <leader>dcd <Action>(ChooseDebugConfiguration)
+map <leader>dcr <Action>(ChooseRunConfiguration)
 
