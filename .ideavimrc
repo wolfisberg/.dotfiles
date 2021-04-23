@@ -5,8 +5,10 @@
 "   Settings -> Editor -> Vim-Emulation
 "
 " Keybinds to set in the IDE
-"   <C-K>/<C-P> => <Up>
-"   <C-J>/<C-N> => <Down>
+"   <C-H> => <Left>
+"   <C-J> => <Down>
+"   <C-K> => <Up>
+"   <C-L> => <Right>
 "
 " Improvements
 "   <C-N>/<C-P> don't work in structure popup when filtered
@@ -24,46 +26,68 @@ set hlsearch
 set ignorecase
 set smartcase
 set incsearch
-map <leader>h :noh<CR>
+nmap <leader>h       :noh<CR>
 
 " NAVIGATION
-map <C-D> <S-M><C-D>
-map <C-U> <S-M><C-U>
-map <C-O> <Action>(Back)
-map <C-I> <Action>(Forward)
+nmap <C-S-l>         <C-W>l
+nmap <C-S-h>         <C-W>h
+nmap <C-D>           <S-M><C-D>
+nmap <C-U>           <S-M><C-U>
+nmap <C-O>           <Action>(Back)
+nmap <C-I>           <Action>(Forward)
 
 " SPLITS/TABS
 set splitbelow
 set splitright
-map <C-L> <C-W><C-L>
-map <C-H> <C-W><C-H>
-map <C-PageDown> <Action>(NextTab)
-map <C-PageUp> <Action>(PreviousTab)
+nmap <C-PageDown>    <Action>(NextTab)
+nmap <C-PageUp>      <Action>(PreviousTab)
 
 " CODE NAVIGATION
-map <leader>o <Action>(FileStructurePopup)
-map <C-S-d> <Action>(GotoDeclaration)
-map <leader>gt <Action>(GotoTypeDeclaration)
-map <leader>gu <Action>(FindUsages)
-map <C-S-u> <Action>(ShowUsages)
-map <leader>gI <Action>(QuickImplementations)
-map <leader>gi <Action>(GotoImplementation)
-map g, <Action>(JumpToNextChange)
-map g; <Action>(JumpToLastChange)
-map <leader>e <Action>(GotoNextError)
-map <leader>E <Action>(GotoPreviousError)
+nmap <leader>o       <Action>(FileStructurePopup)
+nmap <C-S-d>         <Action>(GotoDeclaration)
+nmap <leader>gd      <Action>(GotoDeclaration)
+nmap <leader>gt      <Action>(GotoTypeDeclaration)
+nmap <leader>gu      <Action>(FindUsages)
+nmap <C-S-u>         <Action>(ShowUsages)
+nmap <leader>gi      <Action>(GotoImplementation)
+nmap g,              <Action>(JumpToNextChange)
+nmap g;              <Action>(JumpToLastChange)
+nmap <F2>            <Action>(GotoNextError)
+nmap <F14>           <Action>(GotoPreviousError)
+
+" QUICK PREVIEWS
+nmap <leader>qi      <Action>(QuickImplementations)
+nmap <leader>qt      <Action>(QuickTypeDefinition)
+nmap <leader>qd      <Action>(QuickJavaDoc)
+
+" REFACTORING
+nmap <leader>rm      <Action>(Refactorings.QuickListPopupAction)
+nmap <leader>rn      <Action>(RefactoringMenu)
+nmap <leader>rr      <Action>(RenameElement)
 
 " PROJECT NAVIGATION
-map <leader>fe <Action>(SearchEverywhere)
-map <leader>fa <Action>(GotoAction)
-map <leader>ff <Action>(GotoFile)
-map <leader>fc <Action>(GotoClass)
-map <leader>fs <Action>(GotoSymbol)
+nmap <leader>fe      <Action>(SearchEverywhere)
+nmap <leader>fa      <Action>(GotoAction)
+nmap <leader>ff      <Action>(GotoFile)
+nmap <leader>fc      <Action>(GotoClass)
+nmap <leader>fs      <Action>(GotoSymbol)
+nmap <leader>rf      <Action>(RecentFiles)
+nmap <leader>rl      <Action>(RecentLocations)
+nmap <leader>rcf     <Action>(RecentChangedFiles)
+
+" TOOL WINDOWS
+nmap <leader>wh      <Action>(HideAllWindows)
+nmap <leader>wp      <Action>(ActivateProjectToolWindow)
+nmap <leader>wd      <Action>(ActivateDebugToolWindow)
+nmap <leader>wt      <Action>(ActivateTODOToolWindow)
+nmap <leader>wf      <Action>(ActivateFindToolWindow)
+nmap <leader>wy      <Action>(ActivatePythonConsoleToolWindow)
 
 " DEBUGGING
-map <leader>ds <Action>(Stop)
-map <leader>dd <Action>(Debug)
-map <leader>dr <Action>(Run)
-map <leader>dcd <Action>(ChooseDebugConfiguration)
-map <leader>dcr <Action>(ChooseRunConfiguration)
+nmap <leader>ds      <Action>(Stop)
+nmap <leader>dd      <Action>(Debug)
+nmap <leader>dr      <Action>(Run)
+nmap <leader>dcd     <Action>(ChooseDebugConfiguration)
+nmap <leader>dcr     <Action>(ChooseRunConfiguration)
+nmap <leader>de      <Action>(EvaluateExpression)
 
