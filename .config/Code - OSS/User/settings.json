@@ -63,6 +63,14 @@
             "commands": [ "workbench.view.search" ]
         },
         {
+            "before": [ "<leader>", "w", "t" ],
+            "commands": [ "terminal.focus" ]
+        },
+        {
+            "before": [ "<leader>", "w", "o" ],
+            "commands": [ "workbench.panel.output.focus" ]
+        },
+        {
             "before": [ "<leader>", "w", "h" ],
             "commands": [ "workbench.action.closeSidebar" ]
         },
@@ -181,6 +189,9 @@
     "workbench.editor.showTabs": false,
     "go.toolsManagement.autoUpdate": true,
     "workbench.editor.limit.enabled": true,
-    "python.formatting.blackPath": "${env:HOME}/.local/bin/black",
     "python.formatting.provider": "black",
+    "python.formatting.blackPath": "${env:HOME}/.local/bin/black",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.pylintPath": "${env:HOME}/.local/bin/pylint"
 }
