@@ -14,7 +14,16 @@
     "window.zoomLevel": 1,
     "window.restoreWindows": "none",
     "vim.leader": "<space>",
-    "vim.normalModeKeyBindings": [
+    "vim.normalModeKeyBindingsNonRecursive": [
+        // NAVIGATION
+        {
+            "before": [ "<C-d>" ],
+            "after": [ "<S-m>", "<C-d>" ]
+        },
+        {
+            "before": [ "<C-u>" ],
+            "after": [ "<S-m>", "<C-u>" ]
+        },
         // PROJECT NAVIGATION
         {
             "before": [ "<leader>", "r", "f" ],
@@ -149,5 +158,6 @@
     ],
     "workbench.activityBar.visible": false,
     "workbench.editor.showTabs": false,
-    "go.toolsManagement.autoUpdate": true
+    "go.toolsManagement.autoUpdate": true,
+    "workbench.editor.limit.enabled": true
 }
