@@ -66,6 +66,10 @@
             "before": [ "<leader>", "w", "h" ],
             "commands": [ "workbench.action.closeSidebar" ]
         },
+        {
+            "before": [ "<leader>", "w", "m" ],
+            "commands": [ "docsView.documentation.focus" ]
+        },
         // CODE NAVIGATION
         {
             "before": [ "g", ";" ],
@@ -78,6 +82,10 @@
         {
             "before": [ "<leader>", "q", "d" ],
             "commands": [ "editor.action.peekDefinition" ]
+        },
+        {
+            "before": [ "<leader>", "q", "D" ],
+            "commands": [ "editor.action.showDefinitionPreviewHover" ]
         },
         {
             "before": [ "<leader>", "g", "t" ],
@@ -123,6 +131,14 @@
             "before": [ "<leader>", "q", "u" ],
             "commands": [ "editor.action.referenceSearch.trigger" ]
         },
+        {
+            "before": [ "<leader>", "q", "m" ],
+            "commands": [ "editor.action.showHover" ]
+        },
+        {
+            "before": [ "<leader>", "q", "M" ],
+            "commands": [ "editor.debug.action.showDebugHover" ]
+        },
         // REFACTOR
         {
             "before": [ "<leader>", "r", "m" ],
@@ -155,9 +171,16 @@
             // "commands": [ "workbench.debug.action.toggleRepl" ]
             // "commands": [ "editor.debug.action.selectionToRepl" ]
         },
+        // MISC
+        {
+            "before": [ "<leader>", "c", "f" ],
+            "commands": [ "editor.action.formatDocument" ]
+        },
     ],
     "workbench.activityBar.visible": false,
     "workbench.editor.showTabs": false,
     "go.toolsManagement.autoUpdate": true,
-    "workbench.editor.limit.enabled": true
+    "workbench.editor.limit.enabled": true,
+    "python.formatting.blackPath": "${env:HOME}/.local/bin/black",
+    "python.formatting.provider": "black",
 }
