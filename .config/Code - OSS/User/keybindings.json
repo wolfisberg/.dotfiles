@@ -186,6 +186,11 @@
     },
     {
         "key": "ctrl+k",
+        "command": "selectPrevSuggestion",
+        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+    },
+    {
+        "key": "ctrl+k",
         "command": "history.showPrevious",
         "when": "historyNavigationEnabled && historyNavigationWidget"
     },
@@ -193,11 +198,6 @@
         "key": "ctrl+k",
         "command": "list.focusUp",
         "when": "listFocus && !inputFocus"
-    },
-    {
-        "key": "ctrl+k",
-        "command": "selectPreviousSuggestion",
-        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
     },
     {
         "key": "ctrl+shift+d",
@@ -262,5 +262,20 @@
     {
         "key": "ctrl+n",
         "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "ctrl+k ctrl+k",
+        "command": "-editor.action.selectFromAnchorToCursor",
+        "when": "editorTextFocus && selectionAnchorSet"
+    },
+    {
+        "key": "ctrl+k ctrl+k",
+        "command": "-editor.action.defineKeybinding",
+        "when": "editorTextFocus && !editorReadonly && editorLangId == 'jsonc'"
+    },
+    {
+        "key": "ctrl+k ctrl+k",
+        "command": "-keybindings.editor.defineKeybinding",
+        "when": "inKeybindings && keybindingFocus"
     }
 ]
