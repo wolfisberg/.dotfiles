@@ -1,9 +1,6 @@
 {
     "workbench.colorTheme": "Tokyo Night Storm",
     "keyboard.dispatch": "keyCode",
-    "editor.formatOnSave": true,
-    "editor.formatOnType": true,
-    "editor.formatOnPaste": true,
     "editor.lineNumbers": "relative",
     "workbench.colorCustomizations": {
         "editorLineNumber.activeForeground": "#cccc33",
@@ -11,10 +8,146 @@
     },
     "workbench.tree.indent": 24,
     "workbench.tree.renderIndentGuides": "always",
-    "workbench.activityBar.visible": false,
     "editor.fontSize": 13,
     "editor.minimap.enabled": false,
     "window.menuBarVisibility": "toggle",
     "window.zoomLevel": 1,
-    "window.restoreWindows": "none"
+    "window.restoreWindows": "none",
+    "vim.leader": "<space>",
+    "vim.normalModeKeyBindings": [
+        // PROJECT NAVIGATION
+        {
+            "before": [ "<leader>", "r", "f" ],
+            "commands": [ "workbench.action.openRecent" ]
+        },
+        {
+            "before": [ "<leader>", "f", "f" ],
+            "commands": [ "workbench.action.quickOpen" ]
+        },
+        {
+            "before": [ "<leader>", "f", "s" ],
+            "commands": [ "workbench.action.showAllSymbols" ]
+        },
+        {
+            "before": [ "<leader>", "f", "e" ],
+            "commands": [ "workbench.action.findInFiles" ]
+        },
+        {
+            "before": [ "<leader>", "f", "a" ],
+            "commands": [ "workbench.action.showCommands" ]
+        },
+        // WINDOWS
+        {
+            "before": [ "<leader>", "w", "p" ],
+            "commands": [ "workbench.view.explorer" ]
+        },
+        {
+            "before": [ "<leader>", "w", "d" ],
+            "commands": [ "workbench.view.debug" ]
+        },
+        {
+            "before": [ "<leader>", "w", "x" ],
+            "commands": [ "workbench.view.extensions" ]
+        },
+        {
+            "before": [ "<leader>", "w", "f" ],
+            "commands": [ "workbench.view.search" ]
+        },
+        {
+            "before": [ "<leader>", "w", "h" ],
+            "commands": [ "workbench.action.closeSidebar" ]
+        },
+        // CODE NAVIGATION
+        {
+            "before": [ "g", ";" ],
+            "commands": [ "workbench.action.navigateToLastEditLocation" ]
+        },
+        {
+            "before": [ "<leader>", "g", "d" ],
+            "commands": [ "editor.action.revealDefinition" ]
+        },
+        {
+            "before": [ "<leader>", "q", "d" ],
+            "commands": [ "editor.action.peekDefinition" ]
+        },
+        {
+            "before": [ "<leader>", "g", "t" ],
+            "commands": [ "editor.action.goToTypeDefinition" ]
+        },
+        {
+            "before": [ "<leader>", "q", "t" ],
+            "commands": [ "editor.action.peekTypeDefinition" ]
+        },
+        {
+            "before": [ "<leader>", "g", "D" ],
+            "commands": [ "editor.action.goToDeclaration" ]
+        },
+        {
+            "before": [ "<leader>", "g", "o" ],
+            "commands": [ "editor.action.openDeclarationToTheSide" ]
+        },
+        {
+            "before": [ "<leader>", "o" ],
+            "commands": [ "workbench.action.gotoSymbol" ]
+        },
+        {
+            "before": [ "<leader>", "g", "i" ],
+            "commands": [ "editor.action.goToImplementation" ]
+        },
+        {
+            "before": [ "<leader>", "g", "I" ],
+            "commands": [ "references-view.findImplementations" ]
+        },
+        {
+            "before": [ "<leader>", "q", "i" ],
+            "commands": [ "editor.action.peekImplementation" ]
+        },
+        {
+            "before": [ "<leader>", "g", "u" ],
+            "commands": [ "editor.action.goToReferences" ]
+        },
+        {
+            "before": [ "<leader>", "Q", "u" ],
+            "commands": [ "editor.action.referenceSearch.trigger" ]
+        },
+        {
+            "before": [ "<leader>", "q", "u" ],
+            "commands": [ "editor.action.referenceSearch.trigger" ]
+        },
+        // REFACTOR
+        {
+            "before": [ "<leader>", "r", "m" ],
+            "commands": [ "editor.action.refactor" ]
+        },
+        {
+            "before": [ "<leader>", "r", "r" ],
+            "commands": [ "editor.action.rename" ]
+        },
+        // DEBUG
+        {
+            "before": [ "<leader>", "d", "d" ],
+            "commands": [ "workbench.action.debug.start" ]
+        },
+        {
+            "before": [ "<leader>", "d", "r" ],
+            "commands": [ "workbench.action.debug.run" ]
+        },
+        {
+            "before": [ "<leader>", "d", "c", "d" ],
+            "commands": [ "debug.startFromConfig" ]
+        },
+        {
+            "before": [ "<leader>", "d", "s" ],
+            "commands": [ "workbench.action.debug.stop" ]
+        },
+        {
+            "before": [ "<leader>", "d", "e" ],
+            "commands": [ "workbench.debug.action.focusRepl" ]
+            // "commands": [ "workbench.debug.action.toggleRepl" ]
+            // "commands": [ "editor.debug.action.selectionToRepl" ]
+        },
+    ],
+    "workbench.activityBar.visible": false,
+    "workbench.editor.showTabs": false,
+    "go.toolsManagement.autoUpdate": true
 }
