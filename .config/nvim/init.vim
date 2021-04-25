@@ -48,7 +48,7 @@ set incsearch
 let mapleader = " "
 map <leader>h :noh<CR> 
 map <C-c> "+y
-map <C-v> "+P
+map <C-p> "+P
 
 " NAVIGATION
 nnoremap <C-D> <S-M><C-D>
