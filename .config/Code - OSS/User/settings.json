@@ -71,6 +71,10 @@
             "commands": [ "workbench.panel.output.focus" ]
         },
         {
+            "before": [ "<leader>", "w", "e" ],
+            "commands": [ "workbench.action.problems.focus" ]
+        },
+        {
             "before": [ "<leader>", "w", "h" ],
             "commands": [ "workbench.action.closeSidebar" ]
         },
@@ -130,10 +134,6 @@
         {
             "before": [ "<leader>", "g", "u" ],
             "commands": [ "editor.action.goToReferences" ]
-        },
-        {
-            "before": [ "<leader>", "Q", "u" ],
-            "commands": [ "editor.action.referenceSearch.trigger" ]
         },
         {
             "before": [ "<leader>", "q", "u" ],
@@ -196,7 +196,15 @@
     "python.formatting.provider": "black",
     "python.formatting.blackPath": "${env:HOME}/.local/bin/black",
     "python.linting.enabled": true,
-    "python.linting.pylintEnabled": true,
+    "python.linting.pylintEnabled": false,
     "python.linting.pylintPath": "${env:HOME}/.local/bin/pylint",
+    "python.linting.pycodestyleEnabled": false,
+    "python.linting.pycodestylePath": "${env:HOME}/.local/bin/pycodestyle",
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Path": "${env:HOME}/.local/bin/flake8",
+    "python.linting.flake8Args": ["--max-line-length=120", "--ignore=E203,F841"],
     "python.workspaceSymbols.enabled": true,
+    "python.analysis.memory.keepLibraryAst": true,
+    "python.diagnostics.sourceMapsEnabled": true,
+    "python.languageServer": "Microsoft",
 }
