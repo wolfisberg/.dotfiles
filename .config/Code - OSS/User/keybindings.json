@@ -277,5 +277,15 @@
         "key": "ctrl+k ctrl+k",
         "command": "-keybindings.editor.defineKeybinding",
         "when": "inKeybindings && keybindingFocus"
+    },
+    {
+        "key": "shift+f9",
+        "command": "-editor.debug.action.toggleInlineBreakpoint",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "f9",
+        "command": "-editor.debug.action.toggleBreakpoint",
+        "when": "debuggersAvailable && editorTextFocus"
     }
 ]

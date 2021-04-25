@@ -179,6 +179,10 @@
             // "commands": [ "workbench.debug.action.toggleRepl" ]
             // "commands": [ "editor.debug.action.selectionToRepl" ]
         },
+        {
+            "before": [ "<leader>", "d", "b" ],
+            "commands": [ "editor.debug.action.toggleBreakpoint" ]
+        },
         // MISC
         {
             "before": [ "<leader>", "c", "f" ],
