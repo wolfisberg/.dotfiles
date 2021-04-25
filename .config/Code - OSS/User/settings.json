@@ -197,5 +197,6 @@
     "python.formatting.blackPath": "${env:HOME}/.local/bin/black",
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
-    "python.linting.pylintPath": "${env:HOME}/.local/bin/pylint"
+    "python.linting.pylintPath": "${env:HOME}/.local/bin/pylint",
+    "python.workspaceSymbols.enabled": true,
 }
