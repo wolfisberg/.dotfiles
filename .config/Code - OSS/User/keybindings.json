@@ -287,5 +287,15 @@
         "key": "f9",
         "command": "-editor.debug.action.toggleBreakpoint",
         "when": "debuggersAvailable && editorTextFocus"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "search.action.focusNextSearchResult",
+        "when": "hasSearchResult || inSearchEditor"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "search.action.focusPreviousSearchResult",
+        "when": "hasSearchResult || inSearchEditor"
     }
 ]
