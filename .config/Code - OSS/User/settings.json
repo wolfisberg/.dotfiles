@@ -18,11 +18,11 @@
         // NAVIGATION
         {
             "before": [ "<C-d>" ],
-            "after": [ "<S-m>", "<C-d>" ]
+            "after": [ "<S-m>", "0", "<C-d>" ]
         },
         {
             "before": [ "<C-u>" ],
-            "after": [ "<S-m>", "<C-u>" ]
+            "after": [ "<S-m>", "0", "<C-u>" ]
         },
         // PROJECT NAVIGATION
         {

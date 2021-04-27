@@ -31,8 +31,8 @@ nmap <leader>h       :noh<CR>
 " NAVIGATION
 nmap <C-S-l>         <C-W>l
 nmap <C-S-h>         <C-W>h
-nmap <C-D>           <S-M><C-D>
-nmap <C-U>           <S-M><C-U>
+nmap <C-D>           <S-M>0<C-D>
+nmap <C-U>           <S-M>0<C-U>
 nmap <C-O>           <Action>(Back)
 nmap <C-I>           <Action>(Forward)
 
