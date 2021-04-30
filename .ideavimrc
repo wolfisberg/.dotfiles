@@ -90,4 +90,5 @@ nmap <leader>dr      <Action>(Run)
 nmap <leader>dcd     <Action>(ChooseDebugConfiguration)
 nmap <leader>dcr     <Action>(ChooseRunConfiguration)
 nmap <leader>de      <Action>(EvaluateExpression)
+nmap <leader>db      <Action>(ToggleLineBreakpoint)
 
