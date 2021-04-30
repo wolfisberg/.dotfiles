@@ -6,6 +6,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'preservim/nerdcommenter'
+Plugin 'junegunn/fzf.vim'
 Plugin 'antoinemadec/FixCursorHold.nvim'    " Dependency of fern.vim
 Plugin 'lambdalisue/fern.vim'
 Plugin 'iamcco/markdown-preview.nvim'       " Dependency: yarn
@@ -69,6 +70,7 @@ nnoremap <leader>ff :call fzf#run(fzf#wrap({
     \ 'source': 'fd --ignore-file "$HOME/.config/fd/.fdignore" . .'}))<CR>
 nnoremap <leader>fh :call fzf#run(fzf#wrap({
     \ 'source': 'fd --hidden --ignore-file "$HOME/.config/fd/.fdignore" . "$HOME"'}))<CR>
+nnoremap <leader>fb :call fzf#vim#buffers()<CR>
 
 " FERN 
 let g:fern#disable_default_mappings   = 1
