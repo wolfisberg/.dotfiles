@@ -1018,10 +1018,23 @@ key_bindings:
   #- { key: F,              mods: Command, mode: ~Search,     action: SearchForward    }
   #- { key: B,              mods: Command, mode: ~Search,     action: SearchBackward   }
   #
+  - { key: Minus,           mods: Control|Shift,              action: DecreaseFontSize      }
+  - { key: Equals,          mods: Control|Shift,              action: IncreaseFontSize      }
+  - { key: Key0,            mods: Control|Shift,              action: ResetFontSize         }
   - { key: Insert,          mods: Control,                    action: Copy                  }
   - { key: Insert,          mods: Shift,    mode: ~Vi,        action: Paste                 }
   - { key: PageUp,          mods: Shift,    mode: ~Alt,       action: ScrollHalfPageUp,     }
   - { key: PageDown,        mods: Shift,    mode: ~Alt,       action: ScrollHalfPageDown    }
+
+  # Resets
+  - { key: Key0,            mods: Control,                    action: None           }
+  - { key: Key1,            mods: Control,                    action: None           }
+  - { key: Minus,           mods: Control,                    action: None           }
+  - { key: Equals,          mods: Control,                    action: None           }
+  - { key: Semicolon,       mods: Control,                    action: None           }
+  - { key: Period,          mods: Control,                    action: None           }
+  - { key: Slash,           mods: Control,                    action: None           }
+  - { key: Comma,           mods: Control,                    action: None           }
 
 #debug:
   # Display the time it takes to redraw each frame.
