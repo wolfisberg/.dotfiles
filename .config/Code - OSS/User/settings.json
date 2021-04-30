@@ -207,4 +207,7 @@
     "python.analysis.memory.keepLibraryAst": true,
     "python.diagnostics.sourceMapsEnabled": true,
     "python.languageServer": "Microsoft",
+    "lua-local.interpreter": "lua",
+    "editor.semanticHighlighting.enabled": true,
+    "Lua.telemetry.enable": false
 }
