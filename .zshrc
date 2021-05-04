@@ -118,6 +118,7 @@ alias lg='lazygit'
 
 export PATH=$HOME/.screenlayout:$PATH
 export PATH=$HOME/.scripts:$PATH
+export PATH=$HOME/Applications/bin:$PATH
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 export EDITOR=/usr/bin/vim
@@ -132,4 +133,7 @@ export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 export MANPAGER="sh -c 'col -bx | bat -l man -p --paging always'"
 # Deep learning
 export LD_LIBRARY_PATH=/opt/cuda/extras/CUPTI/lib64:/opt/cuda/targets/x86_64-linux/lib
+
+
+fm6000 --color random --random
 
