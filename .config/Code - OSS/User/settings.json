@@ -15,7 +15,6 @@
     "window.restoreWindows": "none",
     "vim.leader": "<space>",
     "vim.normalModeKeyBindingsNonRecursive": [
-        // NAVIGATION
         {
             "before": [ "<C-d>" ],
             "after": [ "<S-m>", "0", "<C-d>" ]
@@ -24,7 +23,6 @@
             "before": [ "<C-u>" ],
             "after": [ "<S-m>", "0", "<C-u>" ]
         },
-        // PROJECT NAVIGATION
         {
             "before": [ "<leader>", "r", "f" ],
             "commands": [ "workbench.action.openRecent" ]
@@ -45,7 +43,6 @@
             "before": [ "<leader>", "f", "a" ],
             "commands": [ "workbench.action.showCommands" ]
         },
-        // WINDOWS
         {
             "before": [ "<leader>", "w", "p" ],
             "commands": [ "workbench.view.explorer" ]
@@ -82,7 +79,6 @@
             "before": [ "<leader>", "w", "m" ],
             "commands": [ "docsView.documentation.focus" ]
         },
-        // CODE NAVIGATION
         {
             "before": [ "g", ";" ],
             "commands": [ "workbench.action.navigateToLastEditLocation" ]
@@ -147,7 +143,6 @@
             "before": [ "<leader>", "q", "M" ],
             "commands": [ "editor.debug.action.showDebugHover" ]
         },
-        // REFACTOR
         {
             "before": [ "<leader>", "r", "m" ],
             "commands": [ "editor.action.refactor" ]
@@ -156,7 +151,6 @@
             "before": [ "<leader>", "r", "r" ],
             "commands": [ "editor.action.rename" ]
         },
-        // DEBUG
         {
             "before": [ "<leader>", "d", "d" ],
             "commands": [ "workbench.action.debug.start" ]
@@ -176,18 +170,15 @@
         {
             "before": [ "<leader>", "d", "e" ],
             "commands": [ "workbench.debug.action.focusRepl" ]
-            // "commands": [ "workbench.debug.action.toggleRepl" ]
-            // "commands": [ "editor.debug.action.selectionToRepl" ]
         },
         {
             "before": [ "<leader>", "d", "b" ],
             "commands": [ "editor.debug.action.toggleBreakpoint" ]
         },
-        // MISC
         {
             "before": [ "<leader>", "c", "f" ],
             "commands": [ "editor.action.formatDocument" ]
-        },
+        }
     ],
     "workbench.activityBar.visible": false,
     "workbench.editor.showTabs": false,
