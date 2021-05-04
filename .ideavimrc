@@ -54,11 +54,11 @@ nmap g,              <Action>(JumpToNextChange)
 nmap g;              <Action>(JumpToLastChange)
 nmap <F2>            <Action>(GotoNextError)
 nmap <F14>           <Action>(GotoPreviousError)
+nmap <leader>gm      <Action>(QuickJavaDoc)
 
 " QUICK PREVIEWS
 nmap <leader>qi      <Action>(QuickImplementations)
 nmap <leader>qt      <Action>(QuickTypeDefinition)
-nmap <leader>qd      <Action>(QuickJavaDoc)
 
 " REFACTORING
 nmap <leader>rm      <Action>(Refactorings.QuickListPopupAction)
@@ -71,9 +71,9 @@ nmap <leader>fa      <Action>(GotoAction)
 nmap <leader>ff      <Action>(GotoFile)
 nmap <leader>fc      <Action>(GotoClass)
 nmap <leader>fs      <Action>(GotoSymbol)
-nmap <leader>rf      <Action>(RecentFiles)
-nmap <leader>rl      <Action>(RecentLocations)
-nmap <leader>rcf     <Action>(RecentChangedFiles)
+nmap <leader>fr      <Action>(RecentFiles)
+nmap <leader>fR      <Action>(RecentChangedFiles)
+nmap <leader>fl      <Action>(RecentLocations)
 
 " TOOL WINDOWS
 nmap <leader>wh      <Action>(HideAllWindows)
