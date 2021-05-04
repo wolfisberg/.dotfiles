@@ -126,11 +126,11 @@
         #  https://dystroy.org/broot/input/#the-filtering-pattern
         #
         search_modes: {
-            <empty>:    exact path
-            /:          fuzzy path
-            r/:         regex path
+            <empty>:    fuzzy path
+            e/:         exact path
+            r/:          regex path
 
-            n/:         exact name
+            en/:         exact name
             fn/:        fuzzy name
             rn/:        regex name
 
@@ -313,6 +313,10 @@
             key: ctrl-p
             internal: "previous_match"
         }
+        {
+            key: alt-p
+            internal: "toggle_preview"
+        }
     ]
 
 
@@ -409,5 +413,5 @@
         #
     # Change this if you sometimes want to have more than 2 panels
         # open
-        max_panels_count: 3
+        max_panels_count: 2
 }
