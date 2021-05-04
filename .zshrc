@@ -99,13 +99,15 @@ function fman() {
 
 
 eval "$(pyenv init -)"
+#eval "$(starship init zsh)"
 
 
 alias la='ls -la --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
 alias ll='ls -l --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
 alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias confg="lazygit --work-tree=$HOME --git-dir=$HOME/.dotfiles"
-alias finstall="pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
+alias fpac="pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
+alias faur="paru -Slq | fzf --multi --preview 'paru -Si {1}' | xargs -ro paru -S"
 alias fremove="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns"
 alias bat='bat --paging always'
 alias pdf="fd --type f '.*.pdf.*' $HOME | fzf --preview-window=hidden -i -e | xargs -I {} okular {}"
