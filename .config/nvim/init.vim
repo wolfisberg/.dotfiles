@@ -9,6 +9,7 @@ Plugin 'preservim/nerdcommenter'
 Plugin 'junegunn/fzf.vim'
 Plugin 'antoinemadec/FixCursorHold.nvim'    " Dependency of fern.vim
 Plugin 'lambdalisue/fern.vim'
+Plugin 'lambdalisue/fern-hijack.vim'
 Plugin 'iamcco/markdown-preview.nvim'       " Dependency: yarn
 call vundle#end()                           " required
 filetype plugin indent on                   " required
@@ -133,4 +134,7 @@ augroup FernEvents
     autocmd!
     autocmd FileType fern call FernInit()
 augroup END
+
+" MARKDOWN PREVIEW
+nmap <leader>mp <Plug>MarkdownPreviewToggle
 
