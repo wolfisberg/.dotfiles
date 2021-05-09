@@ -31,6 +31,8 @@ syntax on
 set noerrorbells
 set number
 set relativenumber
+set scrolloff=8
+set hidden
 
 set tabstop=4
 set softtabstop=4
@@ -43,9 +45,10 @@ set foldmethod=indent
 set foldnestmax=5
 set nofoldenable
 set foldlevel=2
+set nowrap
 
+set nohlsearch
 set showmatch
-set hlsearch
 set ignorecase
 set smartcase
 set incsearch
@@ -70,7 +73,7 @@ nnoremap <C-H> <C-W><C-H>
 " LSP CONFIG / INSTALL / COMPLETE
 set completeopt=menuone,noinsert
 set shortmess+=c " Avoid showing extra message when using completion
-let g:completion_matching_strategy_list = ['substring']
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 let g:completion_matching_smart_case = 1
 let g:completion_enable_auto_popup = 1
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
