@@ -11,6 +11,8 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'antoinemadec/FixCursorHold.nvim'    " Dependency of fern.vim
 Plugin 'lambdalisue/fern.vim'
 Plugin 'lambdalisue/fern-hijack.vim'
+Plugin 'lambdalisue/nerdfont.vim'
+Plugin 'lambdalisue/fern-renderer-nerdfont.vim'
 Plugin 'iamcco/markdown-preview.nvim'       " Dependency: yarn
 Plugin 'neovim/nvim-lspconfig'
 Plugin 'kabouzeid/nvim-lspinstall'
@@ -111,6 +113,7 @@ nnoremap <leader>fh :call fzf#run(fzf#wrap({
 nnoremap <leader>fb :call fzf#vim#buffers()<CR>
 
 " FERN 
+let g:fern#renderer = "nerdfont"
 let g:fern#disable_default_mappings   = 1
 let g:fern#disable_viewer_hide_cursor = 1
 nnoremap <silent> <Leader>d :Fern . -drawer -width=40 -toggle -reveal=%<CR><C-w>=
