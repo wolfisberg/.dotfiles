@@ -123,7 +123,7 @@ function! FernInit() abort
     nmap <buffer> h <Plug>(fern-action-collapse)
     "nmap <buffer> l <Plug>(fern-action-open-or-expand)
     nmap <buffer> <nowait> < <Plug>(fern-action-leave)
-    nmap <buffer> <nowait> > <Plug>(fern-action-enter)
+    nmap <buffer> <nowait> > <Plug>(fern-action-cd)<Plug>(fern-action-enter)
     nmap <buffer> zh <Plug>(fern-action-hidden:toggle)
     nmap <buffer> F <Plug>(fern-action-grep)
 
