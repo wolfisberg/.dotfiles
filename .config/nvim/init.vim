@@ -6,7 +6,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'gruvbox-community/gruvbox'
-Plugin 'preservim/nerdcommenter'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-commentary'
 Plugin 'junegunn/fzf.vim'
 Plugin 'antoinemadec/FixCursorHold.nvim'    " Dependency of fern.vim
 Plugin 'lambdalisue/fern.vim'
@@ -102,6 +103,10 @@ require'lspinstall'.post_install_hook = function ()
   vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
 end
 EOF
+
+" COMMENTER
+nnoremap <leader>/ :Commentary<CR>
+vnoremap <leader>/ :Commentary<CR>
 
 " FZF
 set rtp+=/usr/bin/fzf
