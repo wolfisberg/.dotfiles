@@ -5,6 +5,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
+Plugin 'gruvbox-community/gruvbox'
 Plugin 'preservim/nerdcommenter'
 Plugin 'junegunn/fzf.vim'
 Plugin 'antoinemadec/FixCursorHold.nvim'    " Dependency of fern.vim
@@ -27,6 +28,8 @@ filetype plugin indent on                   " required
 
 " GENERAL
 syntax on
+autocmd VimEnter * hi Normal ctermbg=none
+colorscheme gruvbox
 
 set noerrorbells
 set number
