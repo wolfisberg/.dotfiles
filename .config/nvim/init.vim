@@ -11,6 +11,9 @@ Plugin 'antoinemadec/FixCursorHold.nvim'    " Dependency of fern.vim
 Plugin 'lambdalisue/fern.vim'
 Plugin 'lambdalisue/fern-hijack.vim'
 Plugin 'iamcco/markdown-preview.nvim'       " Dependency: yarn
+Plugin 'neovim/nvim-lspconfig'
+Plugin 'kabouzeid/nvim-lspinstall'
+Plugin 'nvim-lua/completion-nvim'
 call vundle#end()                           " required
 filetype plugin indent on                   " required
 " Brief help
@@ -63,6 +66,34 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" LSP CONFIG / INSTALL / COMPLETE
+set completeopt=menuone,noinsert
+set shortmess+=c " Avoid showing extra message when using completion
+let g:completion_matching_strategy_list = ['substring']
+let g:completion_matching_smart_case = 1
+let g:completion_enable_auto_popup = 1
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+lua << EOF
+local lsp_conf = require('lspconfig')
+local lsp_inst = require('lspinstall')
+
+local function setup_servers()
+  lsp_inst.setup()
+  for _, server in pairs(lsp_inst.installed_servers()) do
+    lsp_conf[server].setup { on_attach = require'completion'.on_attach }
+  end
+end
+
+setup_servers()
+
+require'lspinstall'.post_install_hook = function ()
+  setup_servers() -- reload installed servers
+  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+end
+EOF
 
 " FZF
 set rtp+=/usr/bin/fzf
