@@ -88,23 +88,23 @@ element-icon {
     padding: 0 0.5em 0 0;
     size: 1.2em;
 }
-element.normal.normal {
-    text-color:       @fg-normal;
-}
-element.normal.active {
-    text-color:       @fg-active-normal;
-}
 element.selected.normal {
     text-color:       @fg-bright;
 }
 element.selected.active {
     text-color:       @fg-active-bright;
 }
+element.normal.normal {
+    text-color:       @fg-normal;
+}
+element.normal.active {
+    text-color:       @fg-active-normal;
+}
 element.alternate.normal {
-    text-color:       @alternate-normal-foreground;
+    text-color:       @fg-normal;
 }
 element.alternate.active {
-    text-color:       @alternate-active-foreground;
+    text-color:       @fg-active-normal;
 }
 
 
