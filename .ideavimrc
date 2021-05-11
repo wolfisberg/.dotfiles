@@ -64,10 +64,9 @@ nmap g,              <Action>(JumpToNextChange)
 nmap g;              <Action>(JumpToLastChange)
 nmap <F2>            <Action>(GotoNextError)
 nmap <F14>           <Action>(GotoPreviousError)
-nmap <leader>gm      <Action>(QuickJavaDoc)
 
 " QUICK PREVIEWS
-nmap <leader>qi      <Action>(QuickImplementations)
+nmap <leader>qd      <Action>(QuickImplementations)
 nmap <leader>qt      <Action>(QuickTypeDefinition)
 nmap <leader>qe      <Action>(ShowErrorDescription)
 
@@ -93,6 +92,7 @@ nmap <leader>wd      <Action>(ActivateDebugToolWindow)
 nmap <leader>wt      <Action>(ActivateTODOToolWindow)
 nmap <leader>wf      <Action>(ActivateFindToolWindow)
 nmap <leader>wy      <Action>(ActivatePythonConsoleToolWindow)
+nmap <leader>m       <Action>(QuickJavaDoc)
 
 " DEBUGGING
 nmap <leader>ds      <Action>(Stop)
