@@ -16,13 +16,23 @@
 let mapleader = " "
 
 " GENERAL
+set visualbell
 set noerrorbells
-set number
 set relativenumber
+set number
+set scrolloff=8
+
+" PLUGINS
+set surround
+
+" IDEA
+set ideastatusicon
+set ideamark
+set ideajoin
 
 " SEARCH
 set showmatch
-set hlsearch
+set nohlsearch
 set ignorecase
 set smartcase
 set incsearch
@@ -31,8 +41,8 @@ nmap <leader>h       :noh<CR>
 " NAVIGATION
 nmap <C-S-l>         <C-W>l
 nmap <C-S-h>         <C-W>h
-nnoremap <C-D>           <S-M>_<C-D>
-nnoremap <C-U>           <S-M>_<C-U>
+nnoremap <C-D>       <S-M>_<C-D>
+nnoremap <C-U>       <S-M>_<C-U>
 nmap <C-O>           <Action>(Back)
 nmap <C-I>           <Action>(Forward)
 
@@ -59,6 +69,7 @@ nmap <leader>gm      <Action>(QuickJavaDoc)
 " QUICK PREVIEWS
 nmap <leader>qi      <Action>(QuickImplementations)
 nmap <leader>qt      <Action>(QuickTypeDefinition)
+nmap <leader>qe      <Action>(ShowErrorDescription)
 
 " REFACTORING
 nmap <leader>rm      <Action>(Refactorings.QuickListPopupAction)
@@ -89,6 +100,9 @@ nmap <leader>dd      <Action>(Debug)
 nmap <leader>dr      <Action>(Run)
 nmap <leader>dcd     <Action>(ChooseDebugConfiguration)
 nmap <leader>dcr     <Action>(ChooseRunConfiguration)
-nmap <leader>de      <Action>(EvaluateExpression)
+nmap <leader>de      <Action>(QuickEvaluateExpression)
+nmap <leader>dE      <Action>(EvaluateExpression)
 nmap <leader>db      <Action>(ToggleLineBreakpoint)
+nmap <leader>dt      <Action>(ToggleBreakpointEnabled)
+nmap <leader>dB      <Action>(ViewBreakpoints)
 
