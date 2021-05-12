@@ -112,7 +112,8 @@ alias fremove="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro s
 alias bat='bat --paging always'
 alias pdf="fd --type f '.*.pdf.*' $HOME | fzf --preview-window=hidden -i -e | xargs -I {} okular {}"
 alias ranger='source ranger'
-alias prp='poetry run python'
+alias porp='poetry run python'
+alias por='poetry run'
 alias lg='lazygit'
 
 
