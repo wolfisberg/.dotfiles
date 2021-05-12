@@ -18,6 +18,7 @@ Plugin 'iamcco/markdown-preview.nvim'       " Dependency: yarn
 Plugin 'neovim/nvim-lspconfig'
 Plugin 'kabouzeid/nvim-lspinstall'
 Plugin 'nvim-lua/completion-nvim'
+Plugin 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call vundle#end()                           " required
 filetype plugin indent on                   " required
 " Brief help
