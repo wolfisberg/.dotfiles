@@ -126,16 +126,17 @@
         #  https://dystroy.org/broot/input/#the-filtering-pattern
         #
         search_modes: {
-            <empty>:    fuzzy path
+            <empty>:    token path
             e/:         exact path
-            r/:          regex path
+            r/:         regex path
+            f/:         fuzzy path
 
-            en/:         exact name
-            fn/:        fuzzy name
+            en/:        exact name
             rn/:        regex name
+            fn/:        fuzzy name
 
-            rc/:        regex content
             ec/:        exact content
+            rc/:        regex content
         }
 
     ###############################################################
