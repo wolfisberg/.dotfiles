@@ -126,7 +126,7 @@
         #  https://dystroy.org/broot/input/#the-filtering-pattern
         #
         search_modes: {
-            <empty>:    token path
+            <empty>:    tokens path
             e/:         exact path
             r/:         regex path
             f/:         fuzzy path
