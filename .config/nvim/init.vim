@@ -5,7 +5,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
-Plugin 'gruvbox-community/gruvbox'
+Plugin 'folke/tokyonight.nvim'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
 Plugin 'junegunn/fzf.vim'
@@ -32,7 +32,11 @@ filetype plugin indent on                   " required
 " GENERAL
 syntax on
 autocmd VimEnter * hi Normal ctermbg=none
-colorscheme gruvbox
+
+" THEME
+let g:tokyonight_transparent="true"
+let g:tokyonight_sidebars = ["fern", "vundle"]
+colorscheme tokyonight
 
 set noerrorbells
 set number
