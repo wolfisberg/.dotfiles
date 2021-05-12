@@ -40,7 +40,7 @@
     fg-active-normal: rgba ( 225, 170, 30, 50 % );
 }
 window {
-    background-color: rgba ( 45, 35, 55, 88 % );
+    background-color: rgba ( 45, 35, 55, 94 % );
     fullscreen: true;
     font: "mono 15";
 }
