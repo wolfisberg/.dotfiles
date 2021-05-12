@@ -35,7 +35,6 @@ autocmd VimEnter * hi Normal ctermbg=none
 
 " THEME
 let g:tokyonight_transparent="true"
-let g:tokyonight_sidebars = ["fern", "vundle"]
 colorscheme tokyonight
 
 set noerrorbells
