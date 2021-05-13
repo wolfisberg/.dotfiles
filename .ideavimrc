@@ -87,11 +87,13 @@ nmap <leader>fl      <Action>(RecentLocations)
 
 " TOOL WINDOWS
 nmap <leader>wh      <Action>(HideAllWindows)
-nmap <leader>wp      <Action>(SelectInProjectView)
+nmap <leader>wp      <Action>(SelectInProjectView)<Action>(LocateInSolutionView)
 nmap <leader>wd      <Action>(ActivateDebugToolWindow)
+nmap <leader>wr      <Action>(ActivateRunToolWindow)
 nmap <leader>wt      <Action>(ActivateTODOToolWindow)
 nmap <leader>wf      <Action>(ActivateFindToolWindow)
 nmap <leader>wy      <Action>(ActivatePythonConsoleToolWindow)
+nmap <leader>wl      <Action>(JumpToLastWindow)
 nmap <leader>m       <Action>(QuickJavaDoc)
 
 " DEBUGGING
@@ -105,4 +107,5 @@ nmap <leader>dE      <Action>(EvaluateExpression)
 nmap <leader>db      <Action>(ToggleLineBreakpoint)
 nmap <leader>dt      <Action>(ToggleBreakpointEnabled)
 nmap <leader>dB      <Action>(ViewBreakpoints)
-
+nmap <leader>dx      <Action>(ShowExecutionPoint)
+nmap <leader>di      <Action>(Debugger.EvaluateInConsole)<Action>(NavigateToImmediateWindow)
