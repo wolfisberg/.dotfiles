@@ -69,6 +69,7 @@ nmap <F14>           <Action>(GotoPreviousError)
 nmap <leader>qd      <Action>(QuickImplementations)
 nmap <leader>qt      <Action>(QuickTypeDefinition)
 nmap <leader>qe      <Action>(ShowErrorDescription)
+nmap <leader>qb      <Action>(ShowBookmarks)
 
 " REFACTORING
 nmap <leader>rm      <Action>(Refactorings.QuickListPopupAction)
