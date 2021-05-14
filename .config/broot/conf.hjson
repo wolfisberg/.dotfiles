@@ -288,11 +288,17 @@
             execution: ":toggle_hidden"
         }
         {
-            key: F1
+            keys: [
+                F1
+                alt-r
+            ]
             execution: ":focus /"
         }
         {
-            key: F2
+            keys: [
+                F2
+                alt-e
+            ]
             execution: ":focus ~"
         }
         {
