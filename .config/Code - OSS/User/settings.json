@@ -13,6 +13,158 @@
     "window.menuBarVisibility": "toggle",
     "window.zoomLevel": 1,
     "window.restoreWindows": "none",
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "pdf-quick",
+            "tools": [
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "pdf-full",
+            "tools": [
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "latexmk 🔃",
+            "tools": [
+                "latexmk"
+            ]
+        },
+        {
+            "name": "latexmk (latexmkrc)",
+            "tools": [
+                "latexmk_rconly"
+            ]
+        },
+        {
+            "name": "latexmk (lualatex)",
+            "tools": [
+                "lualatexmk"
+            ]
+        },
+        {
+            "name": "Compile Rnw files",
+            "tools": [
+                "rnw2tex",
+                "latexmk"
+            ]
+        },
+        {
+            "name": "Compile Jnw files",
+            "tools": [
+                "jnw2tex",
+                "latexmk"
+            ]
+        },
+        {
+            "name": "tectonic",
+            "tools": [
+                "tectonic"
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "lualatexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-lualatex",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "latexmk_rconly",
+            "command": "latexmk",
+            "args": [
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-shell-escape",
+                "%DOC%.tex"
+            ],
+            "env": {}
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "rnw2tex",
+            "command": "Rscript",
+            "args": [
+                "-e",
+                "knitr::opts_knit$set(concordance = TRUE); knitr::knit('%DOCFILE_EXT%')"
+            ],
+            "env": {}
+        },
+        {
+            "name": "jnw2tex",
+            "command": "julia",
+            "args": [
+                "-e",
+                "using Weave; weave(\"%DOC_EXT%\", doctype=\"tex\")"
+            ],
+            "env": {}
+        },
+        {
+            "name": "jnw2texmintex",
+            "command": "julia",
+            "args": [
+                "-e",
+                "using Weave; weave(\"%DOC_EXT%\", doctype=\"texminted\")"
+            ],
+            "env": {}
+        },
+        {
+            "name": "tectonic",
+            "command": "tectonic",
+            "args": [
+                "--synctex",
+                "--keep-logs",
+                "%DOC%.tex"
+            ],
+            "env": {}
+        }
+    ],
+    "latex-workshop.latex.recipe.default": "pdf-full",
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.synctex.afterBuild.enabled": true,
     "vim.leader": "<space>",
     "vim.normalModeKeyBindingsNonRecursive": [
         {
@@ -178,9 +330,38 @@
         {
             "before": [ "<leader>", "c", "f" ],
             "commands": [ "editor.action.formatDocument" ]
+        },
+        {
+            "before": [ "<leader>", "c", "f" ],
+            "commands": [ "latex-structure.focus" ]
+        },
+        {
+            "before": [ "<leader>", "o" ],
+            "commands": [ "latex-structure.focus" ]
+        },
+        {
+            "before": [ "<leader>", "d", "r" ],
+            "commands": [
+                {
+                    "command": "latex-workshop.recipes",
+                    "args": [ "pdf-quick" ]
+                }
+            ]
+        },
+        {
+            "before": [ "<leader>", "d", "d" ],
+            "commands": [
+                {
+                    "command": "latex-workshop.recipes",
+                    "args": [ "pdf-full" ]
+                }
+            ]
+        },
+        {
+            "before": [ "<leader>", "d", "x" ],
+            "commands": [ "latex-workshop.synctex" ]
         }
     ],
-    "workbench.activityBar.visible": false,
     "workbench.editor.showTabs": false,
     "go.toolsManagement.autoUpdate": true,
     "workbench.editor.limit.enabled": true,
@@ -200,5 +381,9 @@
     "python.languageServer": "Microsoft",
     "lua-local.interpreter": "lua",
     "editor.semanticHighlighting.enabled": true,
-    "Lua.telemetry.enable": false
+    "Lua.telemetry.enable": false,
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.activityBar.visible": false
 }

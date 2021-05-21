@@ -297,5 +297,21 @@
         "key": "ctrl+k",
         "command": "search.action.focusPreviousSearchResult",
         "when": "hasSearchResult || inSearchEditor"
+    },
+    {
+        "key": "ctrl+shift+alt+o",
+        "command": "latex-structure.focus"
+    },
+    {
+        "key": "ctrl+alt+shift+l l",
+        "command": "latex-workshop.recipes",
+        "args": "pdf-quick",
+        "when": "editorLangId =~ /latex|rsweave|jlweave/"
+    },
+    {
+        "key": "ctrl+alt+shift+l n",
+        "command": "latex-workshop.recipes",
+        "args": "pdf-full",
+        "when": "editorLangId =~ /latex|rsweave|jlweave/"
     }
 ]
