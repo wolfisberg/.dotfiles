@@ -132,6 +132,7 @@ export FZF_CTRL_T_COMMAND="fd --hidden --exclude '.git' --exclude '.dotfiles' --
 export TERM="xterm-256color"
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 export MANPAGER="sh -c 'col -bx | bat -l man -p --paging always'"
+export BAT_THEME=ansi
 # Deep learning
 export LD_LIBRARY_PATH=/opt/cuda/extras/CUPTI/lib64:/opt/cuda/targets/x86_64-linux/lib
 
