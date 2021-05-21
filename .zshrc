@@ -115,6 +115,7 @@ alias ranger='source ranger'
 alias porp='poetry run python'
 alias por='poetry run'
 alias lg='lazygit'
+alias class="xprop | grep -m 1 WM_CLASS | awk '{print \$4}'"
 
 
 export PATH=$HOME/.screenlayout:$PATH
