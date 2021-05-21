@@ -6,6 +6,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'folke/tokyonight.nvim'
+Plugin 'chrisbra/Colorizer'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
 Plugin 'junegunn/fzf.vim'
@@ -79,6 +80,9 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" COLORIZING
+let g:colorizer_auto_filetype='rasi,lua,css,html,sh,vim,bash'
 
 " LSP CONFIG / INSTALL / COMPLETE
 set completeopt=menuone,noinsert
