@@ -1,4 +1,36 @@
 {
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/*.aux": true,
+        "**/*.bbl": true,
+        "**/*.blg": true,
+        "**/*.log": true,
+        "**/*.out": true,
+        "**/*.lol": true,
+        "**/*.synctex": true,
+        "**/*.txss": true,
+        "**/*.toc": true,
+        "**/*.gz": true,
+    },
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/*.code-search": true,
+        "**/*.aux": true,
+        "**/*.bbl": true,
+        "**/*.blg": true,
+        "**/*.log": true,
+        "**/*.out": true,
+        "**/*.lol": true,
+        "**/*.synctex": true,
+        "**/*.txss": true,
+        "**/*.toc": true,
+        "**/*.gz": true,
+    },
     "workbench.colorTheme": "Tokyo Night Storm",
     "keyboard.dispatch": "keyCode",
     "editor.lineNumbers": "relative",
@@ -13,7 +45,13 @@
     "window.menuBarVisibility": "toggle",
     "window.zoomLevel": 1,
     "window.restoreWindows": "none",
-    "latex-workshop.view.pdf.viewer": "tab",
+    "[latex]": {
+        "editor.wordWrap": "on"
+    },
+    "[bibtex]": {
+        "editor.wordWrap": "on",
+    },
+    "latex-workshop.synctex.path": "/usr/bin/synctex",
     "latex-workshop.latex.recipes": [
         {
             "name": "pdf-quick",
@@ -108,7 +146,7 @@
             "name": "pdflatex",
             "command": "pdflatex",
             "args": [
-                "-synctex=1",
+                "-synctex=-1",
                 "-interaction=nonstopmode",
                 "-file-line-error",
                 "-shell-escape",
@@ -164,202 +202,487 @@
     ],
     "latex-workshop.latex.recipe.default": "pdf-full",
     "latex-workshop.latex.autoBuild.run": "onSave",
-    "latex-workshop.synctex.afterBuild.enabled": true,
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.view.pdf.external.viewer.command": "zathura",
+    "latex-workshop.view.pdf.external.viewer.args": [
+        "--synctex-editor-command",
+        "code --reuse-window -g \"%{input}:%{line}\"",
+        "%PDF%"
+    ],
+    "latex-workshop.view.pdf.external.synctex.command": "zathura",
+    "latex-workshop.view.pdf.external.synctex.args": [
+        "--synctex-forward=%LINE%:0:%TEX%",
+        "%PDF%"
+    ],
     "vim.leader": "<space>",
     "vim.normalModeKeyBindingsNonRecursive": [
         {
-            "before": [ "<C-d>" ],
-            "after": [ "<S-m>", "0", "<C-d>" ]
+            "before": [
+                "<C-d>"
+            ],
+            "after": [
+                "<S-m>",
+                "0",
+                "<C-d>"
+            ]
         },
         {
-            "before": [ "<C-u>" ],
-            "after": [ "<S-m>", "0", "<C-u>" ]
+            "before": [
+                "<C-u>"
+            ],
+            "after": [
+                "<S-m>",
+                "0",
+                "<C-u>"
+            ]
         },
         {
-            "before": [ "<leader>", "r", "f" ],
-            "commands": [ "workbench.action.openRecent" ]
+            "before": [
+                "<leader>",
+                "r",
+                "f"
+            ],
+            "commands": [
+                "workbench.action.openRecent"
+            ]
         },
         {
-            "before": [ "<leader>", "f", "f" ],
-            "commands": [ "workbench.action.quickOpen" ]
+            "before": [
+                "<leader>",
+                "f",
+                "f"
+            ],
+            "commands": [
+                "workbench.action.quickOpen"
+            ]
         },
         {
-            "before": [ "<leader>", "f", "s" ],
-            "commands": [ "workbench.action.showAllSymbols" ]
+            "before": [
+                "<leader>",
+                "f",
+                "s"
+            ],
+            "commands": [
+                "workbench.action.showAllSymbols"
+            ]
         },
         {
-            "before": [ "<leader>", "f", "e" ],
-            "commands": [ "workbench.action.findInFiles" ]
+            "before": [
+                "<leader>",
+                "f",
+                "e"
+            ],
+            "commands": [
+                "workbench.action.findInFiles"
+            ]
         },
         {
-            "before": [ "<leader>", "f", "a" ],
-            "commands": [ "workbench.action.showCommands" ]
+            "before": [
+                "<leader>",
+                "f",
+                "a"
+            ],
+            "commands": [
+                "workbench.action.showCommands"
+            ]
         },
         {
-            "before": [ "<leader>", "w", "p" ],
-            "commands": [ "workbench.view.explorer" ]
+            "before": [
+                "<leader>",
+                "w",
+                "p"
+            ],
+            "commands": [
+                "workbench.view.explorer"
+            ]
         },
         {
-            "before": [ "<leader>", "w", "d" ],
-            "commands": [ "workbench.view.debug" ]
+            "before": [
+                "<leader>",
+                "w",
+                "d"
+            ],
+            "commands": [
+                "workbench.view.debug"
+            ]
         },
         {
-            "before": [ "<leader>", "w", "x" ],
-            "commands": [ "workbench.view.extensions" ]
+            "before": [
+                "<leader>",
+                "w",
+                "x"
+            ],
+            "commands": [
+                "workbench.view.extensions"
+            ]
         },
         {
-            "before": [ "<leader>", "w", "f" ],
-            "commands": [ "workbench.view.search" ]
+            "before": [
+                "<leader>",
+                "w",
+                "f"
+            ],
+            "commands": [
+                "workbench.view.search"
+            ]
         },
         {
-            "before": [ "<leader>", "w", "t" ],
-            "commands": [ "terminal.focus" ]
+            "before": [
+                "<leader>",
+                "w",
+                "t"
+            ],
+            "commands": [
+                "terminal.focus"
+            ]
         },
         {
-            "before": [ "<leader>", "w", "o" ],
-            "commands": [ "workbench.panel.output.focus" ]
+            "before": [
+                "<leader>",
+                "w",
+                "o"
+            ],
+            "commands": [
+                "workbench.panel.output.focus"
+            ]
         },
         {
-            "before": [ "<leader>", "w", "e" ],
-            "commands": [ "workbench.action.problems.focus" ]
+            "before": [
+                "<leader>",
+                "w",
+                "e"
+            ],
+            "commands": [
+                "workbench.action.problems.focus"
+            ]
         },
         {
-            "before": [ "<leader>", "w", "h" ],
-            "commands": [ "workbench.action.closeSidebar" ]
+            "before": [
+                "<leader>",
+                "w",
+                "h"
+            ],
+            "commands": [
+                "workbench.action.closeSidebar"
+            ]
         },
         {
-            "before": [ "<leader>", "w", "m" ],
-            "commands": [ "docsView.documentation.focus" ]
+            "before": [
+                "<leader>",
+                "w",
+                "m"
+            ],
+            "commands": [
+                "docsView.documentation.focus"
+            ]
         },
         {
-            "before": [ "g", ";" ],
-            "commands": [ "workbench.action.navigateToLastEditLocation" ]
+            "before": [
+                "g",
+                ";"
+            ],
+            "commands": [
+                "workbench.action.navigateToLastEditLocation"
+            ]
         },
         {
-            "before": [ "<leader>", "g", "d" ],
-            "commands": [ "editor.action.revealDefinition" ]
+            "before": [
+                "<leader>",
+                "g",
+                "d"
+            ],
+            "commands": [
+                "editor.action.revealDefinition"
+            ]
         },
         {
-            "before": [ "<leader>", "q", "d" ],
-            "commands": [ "editor.action.peekDefinition" ]
+            "before": [
+                "<leader>",
+                "q",
+                "d"
+            ],
+            "commands": [
+                "editor.action.peekDefinition"
+            ]
         },
         {
-            "before": [ "<leader>", "q", "D" ],
-            "commands": [ "editor.action.showDefinitionPreviewHover" ]
+            "before": [
+                "<leader>",
+                "q",
+                "D"
+            ],
+            "commands": [
+                "editor.action.showDefinitionPreviewHover"
+            ]
         },
         {
-            "before": [ "<leader>", "g", "t" ],
-            "commands": [ "editor.action.goToTypeDefinition" ]
+            "before": [
+                "<leader>",
+                "g",
+                "t"
+            ],
+            "commands": [
+                "editor.action.goToTypeDefinition"
+            ]
         },
         {
-            "before": [ "<leader>", "q", "t" ],
-            "commands": [ "editor.action.peekTypeDefinition" ]
+            "before": [
+                "<leader>",
+                "q",
+                "t"
+            ],
+            "commands": [
+                "editor.action.peekTypeDefinition"
+            ]
         },
         {
-            "before": [ "<leader>", "g", "D" ],
-            "commands": [ "editor.action.goToDeclaration" ]
+            "before": [
+                "<leader>",
+                "g",
+                "D"
+            ],
+            "commands": [
+                "editor.action.goToDeclaration"
+            ]
         },
         {
-            "before": [ "<leader>", "g", "o" ],
-            "commands": [ "editor.action.openDeclarationToTheSide" ]
+            "before": [
+                "<leader>",
+                "g",
+                "o"
+            ],
+            "commands": [
+                "editor.action.openDeclarationToTheSide"
+            ]
         },
         {
-            "before": [ "<leader>", "o" ],
-            "commands": [ "workbench.action.gotoSymbol" ]
+            "before": [
+                "<leader>",
+                "o"
+            ],
+            "commands": [
+                "workbench.action.gotoSymbol"
+            ]
         },
         {
-            "before": [ "<leader>", "g", "i" ],
-            "commands": [ "editor.action.goToImplementation" ]
+            "before": [
+                "<leader>",
+                "g",
+                "i"
+            ],
+            "commands": [
+                "editor.action.goToImplementation"
+            ]
         },
         {
-            "before": [ "<leader>", "g", "I" ],
-            "commands": [ "references-view.findImplementations" ]
+            "before": [
+                "<leader>",
+                "g",
+                "I"
+            ],
+            "commands": [
+                "references-view.findImplementations"
+            ]
         },
         {
-            "before": [ "<leader>", "q", "i" ],
-            "commands": [ "editor.action.peekImplementation" ]
+            "before": [
+                "<leader>",
+                "q",
+                "i"
+            ],
+            "commands": [
+                "editor.action.peekImplementation"
+            ]
         },
         {
-            "before": [ "<leader>", "g", "u" ],
-            "commands": [ "editor.action.goToReferences" ]
+            "before": [
+                "<leader>",
+                "g",
+                "u"
+            ],
+            "commands": [
+                "editor.action.goToReferences"
+            ]
         },
         {
-            "before": [ "<leader>", "q", "u" ],
-            "commands": [ "editor.action.referenceSearch.trigger" ]
+            "before": [
+                "<leader>",
+                "q",
+                "u"
+            ],
+            "commands": [
+                "editor.action.referenceSearch.trigger"
+            ]
         },
         {
-            "before": [ "<leader>", "q", "m" ],
-            "commands": [ "editor.action.showHover" ]
+            "before": [
+                "<leader>",
+                "q",
+                "m"
+            ],
+            "commands": [
+                "editor.action.showHover"
+            ]
         },
         {
-            "before": [ "<leader>", "q", "M" ],
-            "commands": [ "editor.debug.action.showDebugHover" ]
+            "before": [
+                "<leader>",
+                "q",
+                "M"
+            ],
+            "commands": [
+                "editor.debug.action.showDebugHover"
+            ]
         },
         {
-            "before": [ "<leader>", "r", "m" ],
-            "commands": [ "editor.action.refactor" ]
+            "before": [
+                "<leader>",
+                "r",
+                "m"
+            ],
+            "commands": [
+                "editor.action.refactor"
+            ]
         },
         {
-            "before": [ "<leader>", "r", "r" ],
-            "commands": [ "editor.action.rename" ]
+            "before": [
+                "<leader>",
+                "r",
+                "r"
+            ],
+            "commands": [
+                "editor.action.rename"
+            ]
         },
         {
-            "before": [ "<leader>", "d", "d" ],
-            "commands": [ "workbench.action.debug.start" ]
+            "before": [
+                "<leader>",
+                "d",
+                "d"
+            ],
+            "commands": [
+                "workbench.action.debug.start"
+            ]
         },
         {
-            "before": [ "<leader>", "d", "r" ],
-            "commands": [ "workbench.action.debug.run" ]
+            "before": [
+                "<leader>",
+                "d",
+                "r"
+            ],
+            "commands": [
+                "workbench.action.debug.run"
+            ]
         },
         {
-            "before": [ "<leader>", "d", "c", "d" ],
-            "commands": [ "debug.startFromConfig" ]
+            "before": [
+                "<leader>",
+                "d",
+                "c",
+                "d"
+            ],
+            "commands": [
+                "debug.startFromConfig"
+            ]
         },
         {
-            "before": [ "<leader>", "d", "s" ],
-            "commands": [ "workbench.action.debug.stop" ]
+            "before": [
+                "<leader>",
+                "d",
+                "s"
+            ],
+            "commands": [
+                "workbench.action.debug.stop"
+            ]
         },
         {
-            "before": [ "<leader>", "d", "e" ],
-            "commands": [ "workbench.debug.action.focusRepl" ]
+            "before": [
+                "<leader>",
+                "d",
+                "e"
+            ],
+            "commands": [
+                "workbench.debug.action.focusRepl"
+            ]
         },
         {
-            "before": [ "<leader>", "d", "b" ],
-            "commands": [ "editor.debug.action.toggleBreakpoint" ]
+            "before": [
+                "<leader>",
+                "d",
+                "b"
+            ],
+            "commands": [
+                "editor.debug.action.toggleBreakpoint"
+            ]
         },
         {
-            "before": [ "<leader>", "c", "f" ],
-            "commands": [ "editor.action.formatDocument" ]
+            "before": [
+                "<leader>",
+                "c",
+                "f"
+            ],
+            "commands": [
+                "editor.action.formatDocument"
+            ]
         },
         {
-            "before": [ "<leader>", "c", "f" ],
-            "commands": [ "latex-structure.focus" ]
+            "before": [
+                "<leader>",
+                "c",
+                "f"
+            ],
+            "commands": [
+                "latex-structure.focus"
+            ]
         },
         {
-            "before": [ "<leader>", "o" ],
-            "commands": [ "latex-structure.focus" ]
+            "before": [
+                "<leader>",
+                "o"
+            ],
+            "commands": [
+                "latex-structure.focus"
+            ]
         },
         {
-            "before": [ "<leader>", "d", "r" ],
+            "before": [
+                "<leader>",
+                "d",
+                "r"
+            ],
             "commands": [
                 {
                     "command": "latex-workshop.recipes",
-                    "args": [ "pdf-quick" ]
+                    "args": [
+                        "pdf-quick"
+                    ]
                 }
             ]
         },
         {
-            "before": [ "<leader>", "d", "d" ],
+            "before": [
+                "<leader>",
+                "d",
+                "d"
+            ],
             "commands": [
                 {
                     "command": "latex-workshop.recipes",
-                    "args": [ "pdf-full" ]
+                    "args": [
+                        "pdf-full"
+                    ]
                 }
             ]
         },
         {
-            "before": [ "<leader>", "d", "x" ],
-            "commands": [ "latex-workshop.synctex" ]
+            "before": [
+                "<leader>",
+                "d",
+                "x"
+            ],
+            "commands": [
+                "latex-workshop.synctex"
+            ]
         }
     ],
     "workbench.editor.showTabs": false,
@@ -374,7 +697,10 @@
     "python.linting.pycodestylePath": "${env:HOME}/.local/bin/pycodestyle",
     "python.linting.flake8Enabled": true,
     "python.linting.flake8Path": "${env:HOME}/.local/bin/flake8",
-    "python.linting.flake8Args": ["--max-line-length=120", "--ignore=E203,F841"],
+    "python.linting.flake8Args": [
+        "--max-line-length=120",
+        "--ignore=E203,F841"
+    ],
     "python.workspaceSymbols.enabled": true,
     "python.analysis.memory.keepLibraryAst": true,
     "python.diagnostics.sourceMapsEnabled": true,
@@ -385,5 +711,14 @@
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "workbench.activityBar.visible": false
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "latex-workshop.bibtex-format.tab": "4 spaces"
 }
