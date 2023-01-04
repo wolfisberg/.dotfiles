@@ -1,0 +1,10 @@
+asvetliakov.vscode-neovim
+bierner.docs-view
+dbaeumer.vscode-eslint
+eamodio.gitlens
+EditorConfig.EditorConfig
+enkia.tokyo-night
+esbenp.prettier-vscode
+golang.go
+Gruntfuggly.todo-tree
+ms-azuretools.vscode-docker
