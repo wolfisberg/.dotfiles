@@ -184,6 +184,7 @@ launch_keys = [
         Key([], "s", lazy.spawn("spotify"), desc="spotify"),
         Key([], "c", lazy.spawn("code"), desc="vscode"),
         Key([], "t", lazy.spawn(TERMINAL), desc="terminal (alacritty)"),
+        Key([], "k", lazy.spawn("keepassxc"), desc="passwords (keepassxc)"),
     ]),
     Key([MOD], "Return", lazy.spawn(TERMINAL), desc="terminal (alacritty"),
     Key([MOD], "n", lazy.spawn("rofi -show combi"), desc="rofi menu"),
