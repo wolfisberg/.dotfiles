@@ -4,12 +4,19 @@ from libqtile import qtile, bar, widget
 from libqtile.config import Screen
 
 from modules.widgets import volume
-from modules.consts import TERMINAL, FONT_SIZE_DEFAULT,\
-    FONT_SIZE_TWOK, BACKGROUND_DARK, HIGHLIGHT_MAIN, MARGIN
+from modules.consts import TERMINAL, WIDGET_SIZE_DEFAULT, \
+    WIDGET_SIZE_TWOK, BACKGROUND_DARK, HIGHLIGHT_MAIN, MARGIN, \
+    FONT_SIZE_DEFAULT, FONT_SIZE_TWOK
 
 
 def create_screen(main=False, twok=False):
+    WIDGET_SIZE = WIDGET_SIZE_TWOK if twok else WIDGET_SIZE_DEFAULT
     FONT_SIZE = FONT_SIZE_TWOK if twok else FONT_SIZE_DEFAULT
+    spacer = widget.Spacer(
+        length=10,
+        background=BACKGROUND_DARK,
+    )
+
     base_widgets = [
         widget.Sep(
             padding=3,
@@ -28,7 +35,7 @@ def create_screen(main=False, twok=False):
             padding=4,
             linewidth=0,
             background=BACKGROUND_DARK,
-        ), 
+        ),
         widget.GroupBox(
             highlight_method='line',
             this_screen_border=HIGHLIGHT_MAIN,
@@ -36,19 +43,22 @@ def create_screen(main=False, twok=False):
             active="#ffffff",
             inactive="#848e96",
             background=BACKGROUND_DARK,
+            fontsize=FONT_SIZE,
         ),
         widget.TextBox(
             text='',
             padding=0,
-            fontsize=FONT_SIZE,
+            fontsize=WIDGET_SIZE,
             foreground=BACKGROUND_DARK,
         ),
         widget.Prompt(),
         widget.Spacer(
-            length=5,
+            length=10,
         ),
         widget.WindowName(
-            foreground='#99c0de', fmt='{}',
+            foreground='#99c0de',
+            fmt='{}',
+            fontsize=FONT_SIZE + 1,
         ),
         widget.Chord(
             chords_colors={
@@ -56,8 +66,15 @@ def create_screen(main=False, twok=False):
             },
             name_transform=lambda name: name.upper(),
         ),
+        widget.TextBox(
+            text='',
+            padding=0,
+            fontsize=WIDGET_SIZE,
+            foreground=BACKGROUND_DARK,
+        ),
         widget.CurrentLayoutIcon(
             scale=0.75,
+            background=BACKGROUND_DARK,
         ),
     ]
 
@@ -75,37 +92,18 @@ def create_screen(main=False, twok=False):
         ),
         widget.Systray(
             icon_size=20,
-        ),
-        widget.TextBox(
-            text='',
-            padding=0,
-            fontsize=FONT_SIZE,
-            foreground=BACKGROUND_DARK,
-        ),
-        volume,
-        widget.TextBox(
-            text='',
-            padding=0,
-            fontsize=FONT_SIZE,
-            foreground=BACKGROUND_DARK,
-        ),
-        widget.TextBox(
-            text='',
-            padding=0,
-            fontsize=FONT_SIZE,
-            foreground=BACKGROUND_DARK,
-        ),
-        widget.Clock(
-            format=' %Y-%m-%d %a %I:%M %p',
             background=BACKGROUND_DARK,
-            foreground='#9bd689',
         ),
-        widget.TextBox(
-            text='',
-            padding=0,
-            fontsize=FONT_SIZE,
-            foreground=BACKGROUND_DARK,
+        spacer,
+        volume,
+        spacer,
+        widget.Clock(
+            format='%Y-%m-%d %a %I:%M %p',
+            background=BACKGROUND_DARK,
+            foreground='#ffffff',
+            fontsize=FONT_SIZE + 1,
         ),
+        spacer,
         widget.TextBox(
             text='',
             mouse_callbacks={
@@ -114,15 +112,17 @@ def create_screen(main=False, twok=False):
                     os.path.expanduser('~/.config/rofi/powermenu.sh')
                 )
             },
-            foreground='#e39378'
+            foreground='#e39378',
+            background=BACKGROUND_DARK,
         ),
+        spacer,
     ]
 
     return Screen(top=bar.Bar(
         base_widgets + main_widgets if main else base_widgets,
         30,
-        background="#40455280",
-        opacity=0.6,
+        background="#40455200",
+        opacity=0.3,
         margin=[MARGIN, MARGIN, 0, MARGIN],
     ))
 

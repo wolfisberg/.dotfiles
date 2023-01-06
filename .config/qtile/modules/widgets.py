@@ -1,5 +1,7 @@
 from libqtile import widget, qtile
 
+from modules.consts import BACKGROUND_DARK
+
 
 colors = [
     ["#282c34", "#282c34"],  # panel background
@@ -55,6 +57,6 @@ volume = MyVolume(
     fontsize=18,
     font='Font Awesome 5 Free',
     foreground=colors[4],
-    background='#2f343f',
+    background=BACKGROUND_DARK,
     mouse_callbacks={'Button1': lambda: qtile.cmd_spawn("pavucontrol")}
 )
