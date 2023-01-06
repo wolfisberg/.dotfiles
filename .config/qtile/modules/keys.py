@@ -4,7 +4,8 @@ from libqtile.lazy import lazy
 from libqtile.config import Key, KeyChord
 
 from modules.groups import groups
-from modules.consts import TERMINAL
+from modules.consts import \
+    TERMINAL, SCREEN_LEFT, SCREEN_MIDDLE, SCREEN_RIGHT
 
 
 mod = "mod4"
@@ -31,7 +32,7 @@ def create_sendwindowtogroup_keys():
         sendtogroupkeys.append(Key(
             [],
             g.name,
-            lazy.window.togroup(g.name, switch_group=True),
+            lazy.window.togroup(g.name, switch_group=False),
             desc="Send window to group " + g.name,
         ))
     return sendtogroupkeys
@@ -55,23 +56,23 @@ def create_sendscreentogroup_keys(screen):
 @lazy.function
 def focus_next_screen(qtile):
     current_screen = qtile.current_screen.index
-    if current_screen == 0:
-        qtile.focus_screen(2)
-    if current_screen == 2:
-        qtile.focus_screen(1)
-    if current_screen == 1:
-        qtile.focus_screen(0)
+    if current_screen == SCREEN_MIDDLE:
+        qtile.focus_screen(SCREEN_RIGHT)
+    if current_screen == SCREEN_RIGHT:
+        qtile.focus_screen(SCREEN_LEFT)
+    if current_screen == SCREEN_LEFT:
+        qtile.focus_screen(SCREEN_MIDDLE)
 
 
 @lazy.function
 def focus_prev_screen(qtile):
     current_screen = qtile.current_screen.index
-    if current_screen == 0:
-        qtile.focus_screen(1)
-    if current_screen == 1:
-        qtile.focus_screen(2)
-    if current_screen == 2:
-        qtile.focus_screen(0)
+    if current_screen == SCREEN_MIDDLE:
+        qtile.focus_screen(SCREEN_LEFT)
+    if current_screen == SCREEN_LEFT:
+        qtile.focus_screen(SCREEN_RIGHT)
+    if current_screen == SCREEN_RIGHT:
+        qtile.focus_screen(SCREEN_MIDDLE)
 
 
 @lazy.function
@@ -174,9 +175,9 @@ keys = keys + [
     # Key([mod], "l", my_prev_screen(), desc="Focus previous screen"),
 
     KeyChord([mod], "semicolon", [
-        Key([], "j", focus_screen(2), desc="Focus screen left"),
-        Key([], "k", focus_screen(0), desc="Focus screen middle"),
-        Key([], "l", focus_screen(1), desc="Focus screen right"),
+        Key([], "j", focus_screen(SCREEN_LEFT), desc="Focus screen left"),
+        Key([], "k", focus_screen(SCREEN_MIDDLE), desc="Focus screen middle"),
+        Key([], "l", focus_screen(SCREEN_RIGHT), desc="Focus screen right"),
     ]),
     KeyChord([mod], "comma", create_gotogroup_keys()),
     KeyChord([mod], "period", create_sendwindowtogroup_keys()),
@@ -184,9 +185,9 @@ keys = keys + [
         [mod],
         "apostrophe",
         [
-            KeyChord([], "j", create_sendscreentogroup_keys(2)),
-            KeyChord([], "k", create_sendscreentogroup_keys(0)),
-            KeyChord([], "l", create_sendscreentogroup_keys(1)),
+            KeyChord([], "j", create_sendscreentogroup_keys(SCREEN_LEFT)),
+            KeyChord([], "k", create_sendscreentogroup_keys(SCREEN_MIDDLE)),
+            KeyChord([], "l", create_sendscreentogroup_keys(SCREEN_RIGHT)),
         ],
     ),
 ]
