@@ -6,8 +6,6 @@ from modules.mouse import mouse
 from modules.hooks import *
 
 
-# TODO: test if imports are even required
-
 # dgroups_key_binder = None
 # dgroups_app_rules = []
 # sendtogroupkeys = dict(font="Cascadia Code", fontsize=13, padding=3)

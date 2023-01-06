@@ -12,31 +12,38 @@ shft = "shift"
 ctrl = "control"
 alt = "mod1"
 
-gotogroupkeys = []
-sendtogroupkeys = []
 
-for i in groups:
-    gotogroupkeys.append(Key(
-        [],
-        i.name,
-        lazy.group[i.name].toscreen(),
-        desc="Go to group " + i.name,
-    ))
-    sendtogroupkeys.append(Key(
-        [],
-        i.name,
-        lazy.window.togroup(i.name, switch_group=True),
-        desc="Send window to group " + i.name,
-    ))
+def create_gotogroup_keys():
+    gotogroupkeys = []
+    for g in groups:
+        gotogroupkeys.append(Key(
+            [],
+            g.name,
+            lazy.group[g.name].toscreen(),
+            desc="Go to group " + g.name,
+        ))
+    return gotogroupkeys
 
 
-def create_send_to_group_keys(screen):
+def create_sendwindowtogroup_keys():
+    sendtogroupkeys = []
+    for g in groups:
+        sendtogroupkeys.append(Key(
+            [],
+            g.name,
+            lazy.window.togroup(g.name, switch_group=True),
+            desc="Send window to group " + g.name,
+        ))
+    return sendtogroupkeys
+
+
+def create_sendscreentogroup_keys(screen):
     keys = []
     for g in groups:
         keys.append(Key(
             [],
             g.name,
-            my_send_group_to_screen(
+            send_group_to_screen(
                 int(g.name) - 1 if int(g.name) > 0 else 9,
                 screen
             ),
@@ -46,7 +53,7 @@ def create_send_to_group_keys(screen):
 
 
 @lazy.function
-def my_next_screen(qtile):
+def focus_next_screen(qtile):
     current_screen = qtile.current_screen.index
     if current_screen == 0:
         qtile.focus_screen(2)
@@ -57,7 +64,7 @@ def my_next_screen(qtile):
 
 
 @lazy.function
-def my_prev_screen(qtile):
+def focus_prev_screen(qtile):
     current_screen = qtile.current_screen.index
     if current_screen == 0:
         qtile.focus_screen(1)
@@ -65,19 +72,21 @@ def my_prev_screen(qtile):
         qtile.focus_screen(2)
     if current_screen == 2:
         qtile.focus_screen(0)
+
+
 @lazy.function
-def my_focus_screen(qtile, index):
+def focus_screen(qtile, index):
     qtile.cmd_to_screen(index)
 
 
 @lazy.function
-def my_send_group_to_screen(qtile, group, screen):
+def send_group_to_screen(qtile, group, screen):
     qtile.screens[screen].set_group(qtile.groups[group])
     qtile.cmd_to_screen(screen)
 
 
 @lazy.function
-def my_show_keybinds(qtile):
+def show_keybinds(qtile):
     binds = []
     for k, v in qtile.keys_map.items():
         binds = binds + key_to_strings(v)
@@ -87,7 +96,8 @@ def my_show_keybinds(qtile):
 
 def key_to_strings(binding, chord_prefix=""):
     sequence = get_sequence_for_key(binding)
-    sequence = chord_prefix + "  " + sequence if len(chord_prefix) > 0 else sequence
+    sequence = chord_prefix + "  " + sequence if len(chord_prefix) > 0 \
+        else sequence
 
     if type(binding).__name__ == "Key":
         return [(sequence, binding.desc)]
@@ -110,8 +120,8 @@ keys = [
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right window"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down window"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up window"),
-    Key([mod, shft], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
-    Key([mod, shft], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
+    Key([mod, shft], "h", lazy.layout.shuffle_left(), desc="Move window left"),
+    Key([mod, shft], "l", lazy.layout.shuffle_right(), desc="Move window right"),
     Key([mod, shft], "j", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([mod, shft], "k", lazy.layout.shuffle_up(), desc="Move window up"),
 
@@ -143,13 +153,13 @@ keys = [
         "r",
         lazy.spawncmd(),
         desc="Spawn a command using a prompt widget"),
-    Key([], "XF86AudioRaiseVolume",lazy.spawn("amixer set Master 3%+")),
-    Key([], "XF86AudioLowerVolume",lazy.spawn("amixer set Master 3%-")),
-    Key([], "XF86AudioMute",lazy.spawn("amixer set Master toggle")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer set Master 3%+")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer set Master 3%-")),
+    Key([], "XF86AudioMute", lazy.spawn("amixer set Master toggle")),
 ]
 
 keys = keys + [
-    Key([mod], "F12", my_show_keybinds(), desc="Show keybindings"),
+    Key([mod], "F12", show_keybinds(), desc="Show keybindings"),
     Key([mod], "m", lazy.spawn("rofi -show combi"), desc="spawn rofi"),
     Key([mod], "b", lazy.spawn("firefox"), desc="Open Firefox"),
     Key(
@@ -164,19 +174,19 @@ keys = keys + [
     # Key([mod], "l", my_prev_screen(), desc="Focus previous screen"),
 
     KeyChord([mod], "semicolon", [
-        Key([], "j", my_focus_screen(2), desc="Focus screen left"),
-        Key([], "k", my_focus_screen(0), desc="Focus screen middle"),
-        Key([], "l", my_focus_screen(1), desc="Focus screen right"),
+        Key([], "j", focus_screen(2), desc="Focus screen left"),
+        Key([], "k", focus_screen(0), desc="Focus screen middle"),
+        Key([], "l", focus_screen(1), desc="Focus screen right"),
     ]),
-    KeyChord([mod], "comma", gotogroupkeys),
-    KeyChord([mod], "period", sendtogroupkeys),
+    KeyChord([mod], "comma", create_gotogroup_keys()),
+    KeyChord([mod], "period", create_sendwindowtogroup_keys()),
     KeyChord(
         [mod],
         "apostrophe",
         [
-            KeyChord([], "j", create_send_to_group_keys(2)),
-            KeyChord([], "k", create_send_to_group_keys(0)),
-            KeyChord([], "l", create_send_to_group_keys(1)),
+            KeyChord([], "j", create_sendscreentogroup_keys(2)),
+            KeyChord([], "k", create_sendscreentogroup_keys(0)),
+            KeyChord([], "l", create_sendscreentogroup_keys(1)),
         ],
     ),
 ]
