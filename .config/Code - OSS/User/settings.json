@@ -3,7 +3,7 @@
     "telemetry.telemetryLevel": "off",
     "editor.lineNumbers": "relative",
     "keyboard.dispatch": "keyCode",
-    "vscode-neovim.neovimInitVimPaths.linux": "/home/kaspar/.config/Code - OSS/User/init.vim",
+    "vscode-neovim.neovimInitVimPaths.linux": "~/.config/Code - OSS/User/init.vim",
     "editor.minimap.enabled": false,
     "window.menuBarVisibility": "toggle",
     "breadcrumbs.enabled": false,
