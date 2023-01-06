@@ -57,10 +57,10 @@ def create_sendgrouptoscreen_keys(screen):
 def focus_next_screen(qtile):
     current_screen = qtile.current_screen.index
     if current_screen == SCREEN_MIDDLE:
-        qtile.focus_screen(SCREEN_LEFT)
-    if current_screen == SCREEN_LEFT:
         qtile.focus_screen(SCREEN_RIGHT)
     if current_screen == SCREEN_RIGHT:
+        qtile.focus_screen(SCREEN_LEFT)
+    if current_screen == SCREEN_LEFT:
         qtile.focus_screen(SCREEN_MIDDLE)
 
 
@@ -68,10 +68,10 @@ def focus_next_screen(qtile):
 def focus_prev_screen(qtile):
     current_screen = qtile.current_screen.index
     if current_screen == SCREEN_MIDDLE:
-        qtile.focus_screen(SCREEN_RIGHT)
-    if current_screen == SCREEN_RIGHT:
         qtile.focus_screen(SCREEN_LEFT)
     if current_screen == SCREEN_LEFT:
+        qtile.focus_screen(SCREEN_RIGHT)
+    if current_screen == SCREEN_RIGHT:
         qtile.focus_screen(SCREEN_MIDDLE)
 
 
@@ -127,6 +127,7 @@ layout_keys = [
     Key([MOD], "backslash", lazy.next_layout(), desc="toggle between layouts"),
     Key([MOD, SHFT], "f", lazy.window.toggle_floating(), desc="toggle window floating"),
 
+    # WINDOWS
     Key([MOD], "h", lazy.layout.left(), desc="move focus to left window"),
     Key([MOD], "l", lazy.layout.right(), desc="move focus to right window"),
     Key([MOD], "j", lazy.layout.down(), desc="move focus down window"),
@@ -135,37 +136,19 @@ layout_keys = [
     Key([MOD, SHFT], "l", lazy.layout.shuffle_right(), desc="move window right"),
     Key([MOD, SHFT], "j", lazy.layout.shuffle_down(), desc="move window down"),
     Key([MOD, SHFT], "k", lazy.layout.shuffle_up(), desc="move window up"),
-
-    # Grow windows. If current window is on the edge of screen and direction
-    # will be to screen edge - window would shrink.
+    Key([MOD, CTRL], "n", lazy.layout.normalize(), desc="reset all window sizes"),
+    Key([MOD], "space", lazy.layout.maximize(), desc="maximze window"),
     Key([MOD, CTRL], "h", lazy.layout.grow(), desc="grow window"),
     Key([MOD, CTRL], "l", lazy.layout.shrink(), desc="shrink window"),
-    Key([MOD, CTRL], "n", lazy.layout.normalize(), desc="reset all window sizes"),
 
-    # Toggle between split and unsplit sides of stack.
-    # Split = all windows displayed
-    # Unsplit = 1 window displayed, like Max layout, but still with
-    # multiple stack panes
-    Key([MOD, "shift"],
-        "Return",
-        lazy.layout.toggle_split(),
-        desc="toggle between split and unsplit sides of stack"),
-
-    # Toggle between different layouts as defined below
-    Key([MOD, "shift", "control"], "h", lazy.layout.swap_column_left()),
-    Key([MOD, "shift", "control"], "l", lazy.layout.swap_column_right()),
-    Key([MOD, "shift"], "space", lazy.layout.flip()),
-
-    # Key([mod], "h", focus_next_screen(), desc="Focus next screen"),
-    # Key([mod], "l", focus_prev_screen(), desc="Focus previous screen"),
-
+    # SCREENS
+    Key([MOD], "bracketleft", focus_prev_screen(), desc="focus previous screen"),
+    Key([MOD], "bracketright", focus_next_screen(), desc="focus next screen"),
     KeyChord([MOD], "semicolon", [
         Key([], "j", focus_screen(SCREEN_LEFT), desc="focus screen left"),
         Key([], "k", focus_screen(SCREEN_MIDDLE), desc="focus screen middle"),
         Key([], "l", focus_screen(SCREEN_RIGHT), desc="focus screen right"),
     ]),
-    KeyChord([MOD], "comma", create_gotogroup_keys()),
-    KeyChord([MOD], "period", create_sendwindowtogroup_keys()),
     KeyChord(
         [MOD],
         "apostrophe",
@@ -175,6 +158,10 @@ layout_keys = [
             KeyChord([], "l", create_sendgrouptoscreen_keys(SCREEN_RIGHT)),
         ],
     ),
+
+    # GROUPS
+    KeyChord([MOD], "comma", create_gotogroup_keys()),
+    KeyChord([MOD], "period", create_sendwindowtogroup_keys()),
 ]
 
 launch_keys = [
@@ -200,7 +187,6 @@ os_keys = [
         desc="power menu",
     ),
     Key([MOD, "control"], "r", lazy.restart(), desc="restart Qtile"),
-    # Key([MOD, "control"], "q", lazy.shutdown(), desc="shutdown Qtile"),
 ]
 
 media_keys = [
