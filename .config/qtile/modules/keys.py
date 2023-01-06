@@ -57,10 +57,10 @@ def create_sendscreentogroup_keys(screen):
 def focus_next_screen(qtile):
     current_screen = qtile.current_screen.index
     if current_screen == SCREEN_MIDDLE:
-        qtile.focus_screen(SCREEN_RIGHT)
-    if current_screen == SCREEN_RIGHT:
         qtile.focus_screen(SCREEN_LEFT)
     if current_screen == SCREEN_LEFT:
+        qtile.focus_screen(SCREEN_RIGHT)
+    if current_screen == SCREEN_RIGHT:
         qtile.focus_screen(SCREEN_MIDDLE)
 
 
@@ -68,10 +68,10 @@ def focus_next_screen(qtile):
 def focus_prev_screen(qtile):
     current_screen = qtile.current_screen.index
     if current_screen == SCREEN_MIDDLE:
-        qtile.focus_screen(SCREEN_LEFT)
-    if current_screen == SCREEN_LEFT:
         qtile.focus_screen(SCREEN_RIGHT)
     if current_screen == SCREEN_RIGHT:
+        qtile.focus_screen(SCREEN_LEFT)
+    if current_screen == SCREEN_LEFT:
         qtile.focus_screen(SCREEN_MIDDLE)
 
 
@@ -171,8 +171,8 @@ keys = keys + [
     ),
     Key([mod], "BackSpace", lazy.window.kill(), desc="Close window"),
 
-    # Key([mod], "h", my_next_screen(), desc="Focus next screen"),
-    # Key([mod], "l", my_prev_screen(), desc="Focus previous screen"),
+    Key([mod], "h", focus_next_screen(), desc="Focus next screen"),
+    Key([mod], "l", focus_prev_screen(), desc="Focus previous screen"),
 
     KeyChord([mod], "semicolon", [
         Key([], "j", focus_screen(SCREEN_LEFT), desc="Focus screen left"),
