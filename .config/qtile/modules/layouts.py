@@ -1,10 +1,11 @@
 from libqtile import layout
 from libqtile.config import Match
 
-from .consts import MARGIN, HIGHLIGHT_MAIN
+from modules.consts import MARGIN, HIGHLIGHT_MAIN
+from modules.verticaltile_layout import VerticalTile
 
 
-LAYOUT_VERTICAL_TILE = layout.VerticalTile(
+LAYOUT_VERTICAL_TILE = VerticalTile(
     margin=MARGIN,
     border_focus=HIGHLIGHT_MAIN,
 )
