@@ -171,8 +171,8 @@ keys = keys + [
     ),
     Key([mod], "BackSpace", lazy.window.kill(), desc="Close window"),
 
-    Key([mod], "h", focus_next_screen(), desc="Focus next screen"),
-    Key([mod], "l", focus_prev_screen(), desc="Focus previous screen"),
+    # Key([mod], "h", focus_next_screen(), desc="Focus next screen"),
+    # Key([mod], "l", focus_prev_screen(), desc="Focus previous screen"),
 
     KeyChord([mod], "semicolon", [
         Key([], "j", focus_screen(SCREEN_LEFT), desc="Focus screen left"),
