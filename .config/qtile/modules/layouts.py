@@ -19,13 +19,20 @@ LAYOUT_MAX = layout.Max(
     border_focus=HIGHLIGHT_MAIN,
 )
 
+LAYOUT_BSP = layout.Bsp(
+    fair=False,
+    border_on_single=True,
+    margin=MARGIN,
+    border_focus=HIGHLIGHT_MAIN,
+)
+
 layouts = [
     LAYOUT_MONAD_TALL,
     LAYOUT_MAX,
     LAYOUT_VERTICAL_TILE,
+    # LAYOUT_BSP,
     # layout.Stack(num_stacks=2),
     # layout.Columns(),
-    # layout.Bsp(),
     # layout.Matrix(),
     # layout.MonadTall(),
     # layout.MonadWide(),
