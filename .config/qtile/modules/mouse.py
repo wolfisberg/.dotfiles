@@ -1,25 +1,25 @@
 from libqtile.config import Click, Drag
 from libqtile.lazy import lazy
 
-from modules.keys import mod
+from modules.keys import MOD
 
 
 # Drag floating layouts.
 mouse = [
      Drag(
-          [mod],
+          [MOD],
           "Button1",
           lazy.window.set_position_floating(),
           start=lazy.window.get_position()
      ),
      Drag(
-          [mod],
+          [MOD],
           "Button3",
           lazy.window.set_size_floating(),
           start=lazy.window.get_size()
      ),
      Click(
-          [mod],
+          [MOD],
           "Button2",
           lazy.window.bring_to_front()
      ),
