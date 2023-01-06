@@ -7,3 +7,5 @@ FONT_SIZE_TWOK = 36
 
 # HIGHLIGHT_MAIN = "#5294e2"
 # HIGHLIGHT_DARK = '#2c5380'
+
+TERMINAL = "alacritty"

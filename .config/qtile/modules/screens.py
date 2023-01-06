@@ -1,10 +1,11 @@
 import os
 
-from libqtile import bar
-from .widgets import *
+from libqtile import qtile, bar, widget
 from libqtile.config import Screen
-from modules.keys import terminal
-from .consts import *
+
+from modules.widgets import volume
+from modules.consts import TERMINAL, FONT_SIZE_DEFAULT,\
+    FONT_SIZE_TWOK, BACKGROUND_DARK, HIGHLIGHT_MAIN, MARGIN
 
 
 def create_screen(main=False, twok=False):
@@ -19,7 +20,9 @@ def create_screen(main=False, twok=False):
             filename='~/.config/qtile/eos-c.png',
             margin=3,
             background=BACKGROUND_DARK,
-            mouse_callbacks={'Button1': lambda: qtile.cmd_spawn("rofi -show combi")},
+            mouse_callbacks={
+                'Button1': lambda: qtile.cmd_spawn("rofi -show combi")
+            },
         ),
         widget.Sep(
             padding=4,
@@ -35,9 +38,9 @@ def create_screen(main=False, twok=False):
             background=BACKGROUND_DARK,
         ),
         widget.TextBox(
-            text = '',
-            padding = 0,
-            fontsize = FONT_SIZE,
+            text='',
+            padding=0,
+            fontsize=FONT_SIZE,
             foreground=BACKGROUND_DARK,
         ),
         widget.Prompt(),
@@ -45,7 +48,7 @@ def create_screen(main=False, twok=False):
             length=5,
         ),
         widget.WindowName(
-            foreground='#99c0de',fmt='{}',
+            foreground='#99c0de', fmt='{}',
         ),
         widget.Chord(
             chords_colors={
@@ -66,48 +69,50 @@ def create_screen(main=False, twok=False):
             foreground="#ffffff",
             mouse_callbacks={
                 'Button1':
-                lambda: qtile.cmd_spawn(terminal + ' -e yay -Syu')
+                lambda: qtile.cmd_spawn(TERMINAL + ' -e yay -Syu')
             },
             background=BACKGROUND_DARK,
         ),
         widget.Systray(
-            icon_size = 20,
+            icon_size=20,
         ),
         widget.TextBox(
-            text = '',
-            padding = 0,
-            fontsize = FONT_SIZE,
+            text='',
+            padding=0,
+            fontsize=FONT_SIZE,
             foreground=BACKGROUND_DARK,
         ),
         volume,
-        widget.TextBox(                                                                    
-            text = '',
-            padding = 0,
-            fontsize = FONT_SIZE,
+        widget.TextBox(
+            text='',
+            padding=0,
+            fontsize=FONT_SIZE,
             foreground=BACKGROUND_DARK,
         ),
         widget.TextBox(
-            text = '',
-            padding = 0,
-            fontsize = FONT_SIZE,
+            text='',
+            padding=0,
+            fontsize=FONT_SIZE,
             foreground=BACKGROUND_DARK,
-        ),    
+        ),
         widget.Clock(
             format=' %Y-%m-%d %a %I:%M %p',
             background=BACKGROUND_DARK,
             foreground='#9bd689',
         ),
-        widget.TextBox(                                                
-            text = '',
-            padding = 0,
-            fontsize = FONT_SIZE,
+        widget.TextBox(
+            text='',
+            padding=0,
+            fontsize=FONT_SIZE,
             foreground=BACKGROUND_DARK,
-        ),   
+        ),
         widget.TextBox(
             text='',
-            mouse_callbacks= {
+            mouse_callbacks={
                 'Button1':
-                lambda: qtile.cmd_spawn(os.path.expanduser('~/.config/rofi/powermenu.sh'))
+                lambda: qtile.cmd_spawn(
+                    os.path.expanduser('~/.config/rofi/powermenu.sh')
+                )
             },
             foreground='#e39378'
         ),
@@ -120,6 +125,7 @@ def create_screen(main=False, twok=False):
         opacity=0.6,
         margin=[MARGIN, MARGIN, 0, MARGIN],
     ))
+
 
 screens = [
     create_screen(main=True),

@@ -1,6 +1,7 @@
 from libqtile import layout
 from libqtile.config import Match
-from .consts import *
+
+from .consts import MARGIN, HIGHLIGHT_MAIN
 
 
 layouts = [

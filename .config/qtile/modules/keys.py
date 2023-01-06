@@ -1,49 +1,125 @@
+import os
+
 from libqtile.lazy import lazy
-from libqtile.config import Key
+from libqtile.config import Key, KeyChord
+
+from modules.groups import groups
+from modules.consts import TERMINAL
+
 
 mod = "mod4"
-terminal = "alacritty"
+shft = "shift"
+ctrl = "control"
+alt = "mod1"
+
+gotogroupkeys = []
+sendtogroupkeys = []
+
+for i in groups:
+    gotogroupkeys.append(Key(
+        [],
+        i.name,
+        lazy.group[i.name].toscreen(),
+        desc="Go to group " + i.name,
+    ))
+    sendtogroupkeys.append(Key(
+        [],
+        i.name,
+        lazy.window.togroup(i.name, switch_group=True),
+        desc="Send window to group " + i.name,
+    ))
+
+
+def create_send_to_group_keys(screen):
+    keys = []
+    for g in groups:
+        keys.append(Key(
+            [],
+            g.name,
+            my_send_group_to_screen(
+                int(g.name) - 1 if int(g.name) > 0 else 9,
+                screen
+            ),
+            desc="Send group " + g.name + " to screen " + str(screen),
+        ))
+    return keys
+
+
+@lazy.function
+def my_next_screen(qtile):
+    current_screen = qtile.current_screen.index
+    if current_screen == 0:
+        qtile.focus_screen(2)
+    if current_screen == 2:
+        qtile.focus_screen(1)
+    if current_screen == 1:
+        qtile.focus_screen(0)
+
+
+@lazy.function
+def my_prev_screen(qtile):
+    current_screen = qtile.current_screen.index
+    if current_screen == 0:
+        qtile.focus_screen(1)
+    if current_screen == 1:
+        qtile.focus_screen(2)
+    if current_screen == 2:
+        qtile.focus_screen(0)
+@lazy.function
+def my_focus_screen(qtile, index):
+    qtile.cmd_to_screen(index)
+
+
+@lazy.function
+def my_send_group_to_screen(qtile, group, screen):
+    qtile.screens[screen].set_group(qtile.groups[group])
+    qtile.cmd_to_screen(screen)
+
+
+@lazy.function
+def my_show_keybinds(qtile):
+    binds = []
+    for k, v in qtile.keys_map.items():
+        binds = binds + key_to_strings(v)
+    binds = map(lambda x: x[0].rjust(30, " ") + "     " + x[1], binds)
+    qtile.cmd_spawn("echo '" + "\n".join(binds) + "' | rofi -dmenu -i", True)
+
+
+def key_to_strings(binding, chord_prefix=""):
+    sequence = get_sequence_for_key(binding)
+    sequence = chord_prefix + "  " + sequence if len(chord_prefix) > 0 else sequence
+
+    if type(binding).__name__ == "Key":
+        return [(sequence, binding.desc)]
+
+    if type(binding).__name__ == "KeyChord":
+        binds = []
+        for b in binding.submappings:
+            binds = binds + key_to_strings(b, sequence)
+        return binds
+
+
+def get_sequence_for_key(key):
+    return " + ".join(key.modifiers + [key.key])
+
 
 keys = [
-    # Switch between windows
-    Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
-    Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
-    Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
-    Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod],
-        "space",
-        lazy.layout.next(),
-        desc="Move window focus to other window"),
+    Key([mod], "n", lazy.spawn("rofi -show combi"), desc="Spawn rofi menu"),
 
-    Key([mod], "r", lazy.spawn("rofi -show combi"), desc="spawn rofi"),
-
-    # Move windows between left/right columns or move up/down in current stack.
-    # Moving out of range in Columns layout will create new column.
-    Key([mod, "shift"],
-        "h",
-        lazy.layout.shuffle_left(),
-        desc="Move window to the left"),
-    Key([mod, "shift"],
-        "l",
-        lazy.layout.shuffle_right(),
-        desc="Move window to the right"),
-    Key([mod, "shift"],
-        "j",
-        lazy.layout.shuffle_down(),
-        desc="Move window down"),
-    Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
+    Key([mod], "h", lazy.layout.left(), desc="Move focus to left window"),
+    Key([mod], "l", lazy.layout.right(), desc="Move focus to right window"),
+    Key([mod], "j", lazy.layout.down(), desc="Move focus down window"),
+    Key([mod], "k", lazy.layout.up(), desc="Move focus up window"),
+    Key([mod, shft], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
+    Key([mod, shft], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
+    Key([mod, shft], "j", lazy.layout.shuffle_down(), desc="Move window down"),
+    Key([mod, shft], "k", lazy.layout.shuffle_up(), desc="Move window up"),
 
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
-    Key([mod, "control"],
-        "h",
-        lazy.layout.grow(),
-        desc="Grow window"),
-    Key([mod, "control"],
-        "l",
-        lazy.layout.shrink(),
-        desc="Shrink window"),
-    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    Key([mod, ctrl], "h", lazy.layout.grow(), desc="Grow window"),
+    Key([mod, ctrl], "l", lazy.layout.shrink(), desc="Shrink window"),
+    Key([mod, ctrl], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
 
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
@@ -53,7 +129,7 @@ keys = [
         "Return",
         lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack"),
-    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+    Key([mod], "Return", lazy.spawn(TERMINAL), desc="Launch terminal"),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
@@ -70,4 +146,37 @@ keys = [
     Key([], "XF86AudioRaiseVolume",lazy.spawn("amixer set Master 3%+")),
     Key([], "XF86AudioLowerVolume",lazy.spawn("amixer set Master 3%-")),
     Key([], "XF86AudioMute",lazy.spawn("amixer set Master toggle")),
+]
+
+keys = keys + [
+    Key([mod], "F12", my_show_keybinds(), desc="Show keybindings"),
+    Key([mod], "m", lazy.spawn("rofi -show combi"), desc="spawn rofi"),
+    Key([mod], "b", lazy.spawn("firefox"), desc="Open Firefox"),
+    Key(
+        [ctrl, alt],
+        "Delete",
+        lazy.spawn(os.path.expanduser('~/.config/rofi/powermenu.sh')),
+        desc="Power menu",
+    ),
+    Key([mod], "BackSpace", lazy.window.kill(), desc="Close window"),
+
+    # Key([mod], "h", my_next_screen(), desc="Focus next screen"),
+    # Key([mod], "l", my_prev_screen(), desc="Focus previous screen"),
+
+    KeyChord([mod], "semicolon", [
+        Key([], "j", my_focus_screen(2), desc="Focus screen left"),
+        Key([], "k", my_focus_screen(0), desc="Focus screen middle"),
+        Key([], "l", my_focus_screen(1), desc="Focus screen right"),
+    ]),
+    KeyChord([mod], "comma", gotogroupkeys),
+    KeyChord([mod], "period", sendtogroupkeys),
+    KeyChord(
+        [mod],
+        "apostrophe",
+        [
+            KeyChord([], "j", create_send_to_group_keys(2)),
+            KeyChord([], "k", create_send_to_group_keys(0)),
+            KeyChord([], "l", create_send_to_group_keys(1)),
+        ],
+    ),
 ]
