@@ -4,19 +4,25 @@ from libqtile.config import Match
 from .consts import MARGIN, HIGHLIGHT_MAIN
 
 
+LAYOUT_VERTICAL_TILE = layout.VerticalTile(
+    margin=MARGIN,
+    border_focus=HIGHLIGHT_MAIN,
+)
+
+LAYOUT_MONAD_TALL = layout.MonadTall(
+    margin=MARGIN,
+    border_focus=HIGHLIGHT_MAIN,
+)
+
+LAYOUT_MAX = layout.Max(
+    margin=MARGIN,
+    border_focus=HIGHLIGHT_MAIN,
+)
+
 layouts = [
-    layout.MonadTall(
-        margin=MARGIN,
-        border_focus=HIGHLIGHT_MAIN,
-    ),
-    layout.Max(
-        margin=MARGIN,
-        border_focus=HIGHLIGHT_MAIN,
-    ),
-    layout.VerticalTile(
-        margin=MARGIN,
-        border_focus=HIGHLIGHT_MAIN,
-    ),
+    LAYOUT_MONAD_TALL,
+    LAYOUT_MAX,
+    LAYOUT_VERTICAL_TILE,
     # layout.Stack(num_stacks=2),
     # layout.Columns(),
     # layout.Bsp(),
