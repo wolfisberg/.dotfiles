@@ -1,30 +1,35 @@
 from libqtile import layout
 from libqtile.config import Match
 
-from modules.consts import MARGIN, HIGHLIGHT_MAIN
+from modules.consts import MARGIN, BORDER_FOCUS, BORDER_NORMAL
 from modules.verticaltile_layout import VerticalTile
 
 
 LAYOUT_VERTICAL_TILE = VerticalTile(
     margin=MARGIN,
-    border_focus=HIGHLIGHT_MAIN,
+    border_focus=BORDER_FOCUS,
+    border_normal=BORDER_NORMAL,
 )
 
 LAYOUT_MONAD_TALL = layout.MonadTall(
     margin=MARGIN,
-    border_focus=HIGHLIGHT_MAIN,
+    border_focus=BORDER_FOCUS,
+    border_normal=BORDER_NORMAL,
 )
 
 LAYOUT_MAX = layout.Max(
     margin=MARGIN,
-    border_focus=HIGHLIGHT_MAIN,
+    border_focus=BORDER_FOCUS,
+    border_normal=BORDER_NORMAL,
+    border_width=2,
 )
 
 LAYOUT_BSP = layout.Bsp(
     fair=False,
     border_on_single=True,
     margin=MARGIN,
-    border_focus=HIGHLIGHT_MAIN,
+    border_focus=BORDER_FOCUS,
+    border_normal=BORDER_NORMAL,
 )
 
 layouts = [
