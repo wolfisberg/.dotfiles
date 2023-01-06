@@ -116,6 +116,8 @@ def get_sequence_for_key(key):
 
 keys = [
     Key([mod], "n", lazy.spawn("rofi -show combi"), desc="Spawn rofi menu"),
+    
+    Key([mod, shft], "f", lazy.window.toggle_floating(), desc="Toggle floating"),
 
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left window"),
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right window"),
