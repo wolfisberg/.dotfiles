@@ -36,8 +36,12 @@ syntax on
 autocmd VimEnter * hi Normal ctermbg=none
 
 " THEME
-let g:tokyonight_transparent="true"
-colorscheme tokyonight
+lua << EOF
+require("tokyonight").setup({
+  style = "night", -- `storm`, `moon`, `night`, `day`
+  transparent = true, -- Enable this to disable setting the background color
+})
+EOF
 
 set noerrorbells
 set number
