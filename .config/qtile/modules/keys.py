@@ -4,7 +4,7 @@ from libqtile.lazy import lazy
 from libqtile.config import Key, KeyChord
 
 from modules.groups import groups as groups_and_scratchpads, \
-    GRP_SCRATCHPAD, DD_PASSWORD, DD_TERM, DD_FM
+    GRP_SCRATCHPAD, DD_PASSWORD, DD_TERM, DD_FM, DD_TUI_FM
 from modules.consts import \
     TERMINAL, SCREEN_LEFT, SCREEN_MIDDLE, SCREEN_RIGHT
 
@@ -185,13 +185,14 @@ launch_keys = [
     ]),
     Key([MOD], "Return", lazy.spawn(TERMINAL), desc="terminal (alacritty"),
     Key([MOD], "n", lazy.spawn("rofi -show combi"), desc="rofi menu"),
-    Key([MOD], "F11", lazy.group[GRP_SCRATCHPAD].dropdown_toggle(DD_PASSWORD)),
-    Key([MOD], "F10", lazy.group[GRP_SCRATCHPAD].dropdown_toggle(DD_FM)),
+    Key([MOD], "F12", lazy.group[GRP_SCRATCHPAD].dropdown_toggle(DD_PASSWORD)),
+    Key([MOD], "F11", lazy.group[GRP_SCRATCHPAD].dropdown_toggle(DD_FM)),
+    Key([MOD], "F10", lazy.group[GRP_SCRATCHPAD].dropdown_toggle(DD_TUI_FM)),
     Key([MOD], "F9", lazy.group[GRP_SCRATCHPAD].dropdown_toggle(DD_TERM)),
 ]
 
 os_keys = [
-    Key([MOD], "F12", show_keybinds(), desc="show keybindings"),
+    Key([MOD], "F1", show_keybinds(), desc="show keybindings"),
     Key([MOD], "BackSpace", lazy.window.kill(), desc="close window"),
     Key(
         [CTRL, ALT],

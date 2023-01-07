@@ -7,6 +7,7 @@ GRP_SCRATCHPAD = "scratchpad"
 DD_PASSWORD = "dd_password"
 DD_TERM = "dd_terminal"
 DD_FM = "dd_files"
+DD_TUI_FM = "dd_tui_files"
 
 dd_args = dict(
     opacity=1,
@@ -25,6 +26,7 @@ groups = [
             DropDown(DD_PASSWORD, "keepassxc", **dd_args),
             DropDown(DD_TERM, "alacritty", **dd_args),
             DropDown(DD_FM, "thunar", **dd_args),
+            DropDown(DD_TUI_FM, "alacritty -e ranger", **dd_args),
         ],
         single=True
     ),
