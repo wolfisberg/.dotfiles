@@ -1,6 +1,5 @@
 # TODO: rethink group matchings
 # TODO: create spotify scratchpad?
-# TODO: remove mouse accel
 # TODO: save prev layout when switching to 3 and restore when moving out of 3
 # TODO: make rofi spawn on main monitor only
 # TODO: keys / super / trapped in terminal etc?
@@ -12,3 +11,4 @@
 # TODO: set keybind for minimizing windows
 # Key([MOD, CTRL], "space", lazy.layout.minimize(), desc="minimize window"),
 # https://docs.qtile.org/en/latest/manual/ref/commands.html#libqtile.backend.base.Window.toggle_minimize
+
