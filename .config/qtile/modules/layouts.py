@@ -5,31 +5,23 @@ from modules.consts import MARGIN, BORDER_FOCUS, BORDER_NORMAL
 from modules.verticaltile_layout import VerticalTile
 
 
-LAYOUT_VERTICAL_TILE = VerticalTile(
-    margin=MARGIN,
-    border_focus=BORDER_FOCUS,
-    border_normal=BORDER_NORMAL,
-)
-
-LAYOUT_MONAD_TALL = layout.MonadTall(
-    margin=MARGIN,
-    border_focus=BORDER_FOCUS,
-    border_normal=BORDER_NORMAL,
-)
-
-LAYOUT_MAX = layout.Max(
+default_args = dict(
     margin=MARGIN,
     border_focus=BORDER_FOCUS,
     border_normal=BORDER_NORMAL,
     border_width=2,
 )
 
+LAYOUT_VERTICAL_TILE = VerticalTile(**default_args)
+
+LAYOUT_MONAD_TALL = layout.MonadTall(**default_args)
+
+LAYOUT_MAX = layout.Max(**default_args)
+
 LAYOUT_BSP = layout.Bsp(
-    fair=False,
+    **default_args,
     border_on_single=True,
-    margin=MARGIN,
-    border_focus=BORDER_FOCUS,
-    border_normal=BORDER_NORMAL,
+    fair=False,
 )
 
 layouts = [
@@ -37,16 +29,6 @@ layouts = [
     LAYOUT_MAX,
     LAYOUT_VERTICAL_TILE,
     # LAYOUT_BSP,
-    # layout.Stack(num_stacks=2),
-    # layout.Columns(),
-    # layout.Matrix(),
-    # layout.MonadTall(),
-    # layout.MonadWide(),
-    # layout.MonadThreeCol(),
-    # layout.RatioTile(),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    # layout.Zoomy(),
 ]
 
 floating_layout = layout.Floating(float_rules=[
