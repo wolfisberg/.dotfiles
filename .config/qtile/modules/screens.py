@@ -55,16 +55,21 @@ def create_screen(main=False, twok=False):
         widget.Spacer(
             length=10,
         ),
-        widget.WindowName(
+        widget.TaskList(
             foreground='#99c0de',
-            fmt='{}',
             fontsize=FONT_SIZE + 1,
+            borderwidth=1,
+            highlight_method="block",
+            border=HIGHLIGHT_MAIN + "44",
+            icon_size=0,
+            padding_y=3,
+            padding_x=6,
         ),
-        widget.Chord(
-            chords_colors={
-                'launch': ("#ff0000", "#ffffff"),
-            },
-            name_transform=lambda name: name.upper(),
+        widget.Mpris2(
+            foreground="#ffffff",
+            fontsize=FONT_SIZE + 1,
+            display_metadata=["xesam:artist", "xesam:title", "xesam:album"],
+            scroll=False,
         ),
         widget.TextBox(
             text='',
