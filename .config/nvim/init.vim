@@ -93,24 +93,24 @@ let g:completion_enable_auto_popup = 1
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-lua << EOF
-local lsp_conf = require('lspconfig')
-local lsp_inst = require('lspinstall')
-
-local function setup_servers()
-  lsp_inst.setup()
-  for _, server in pairs(lsp_inst.installed_servers()) do
-    lsp_conf[server].setup { on_attach = require'completion'.on_attach }
-  end
-end
-
-setup_servers()
-
-require'lspinstall'.post_install_hook = function ()
-  setup_servers() -- reload installed servers
-  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
-EOF
+"lua << EOF
+"local lsp_conf = require('lspconfig')
+"local lsp_inst = require('lspinstall')
+"
+"local function setup_servers()
+  "lsp_inst.setup()
+  "for _, server in pairs(lsp_inst.installed_servers()) do
+    "lsp_conf[server].setup { on_attach = require'completion'.on_attach }
+  "end
+"end
+"
+"setup_servers()
+"
+"require'lspinstall'.post_install_hook = function ()
+  "setup_servers() -- reload installed servers
+  "vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+"end
+"EOF
 
 " COMMENTER
 nnoremap <leader>/ :Commentary<CR>
