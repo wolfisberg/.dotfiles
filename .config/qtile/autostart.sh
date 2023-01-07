@@ -21,7 +21,7 @@ picom & disown # --experimental-backends --vsync should prevent screen tearing o
 ~/.config/qtile/scripts/check_battery.sh & disown
 
 # Start welcome
-eos-welcome & disown
+#eos-welcome & disown
 
 # Policy kit
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & disown # start polkit agent from GNOME
@@ -33,5 +33,4 @@ nextcloud & disown
 nm-applet & disown
 
 # Systray volume
-volumeicon & disown
-
+pa-applet & disown
