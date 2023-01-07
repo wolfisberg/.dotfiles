@@ -1,5 +1,13 @@
 {
-    "workbench.colorTheme": "Tokyo Night Storm",
+    "workbench.colorTheme": "SynthWave '84",
+    "workbench.colorCustomizations": {
+      "[Tokyo Night]": {
+        "editor.background": "#11000a",
+      },
+      "[SynthWave '84]": {
+        "editor.background": "#11000a",
+      },
+    },
     "telemetry.telemetryLevel": "off",
     "editor.lineNumbers": "relative",
     "keyboard.dispatch": "keyCode",
