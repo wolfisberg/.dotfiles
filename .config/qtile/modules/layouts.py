@@ -1,8 +1,7 @@
 from libqtile import layout
 from libqtile.config import Match
 
-from modules.consts import MARGIN, BORDER_FOCUS, BORDER_NORMAL, \
-    HIGHLIGHT_ALT, BORDER_WIDTH
+from modules.consts import MARGIN, BORDER_FOCUS, BORDER_NORMAL, BORDER_WIDTH
 from modules.verticaltile_layout import VerticalTile
 
 
@@ -33,7 +32,7 @@ layouts = [
 ]
 
 floating_layout = layout.Floating(
-    border_focus=HIGHLIGHT_ALT,
+    border_focus=BORDER_FOCUS,
     border_normal=BORDER_NORMAL,
     border_width=BORDER_WIDTH,
     float_rules=[

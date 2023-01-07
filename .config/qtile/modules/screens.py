@@ -56,11 +56,11 @@ def create_screen(main=False, twok=False):
             length=10,
         ),
         widget.TaskList(
-            foreground='#99c0de',
+            foreground='#ffffff',
             fontsize=FONT_SIZE + 1,
             borderwidth=1,
             highlight_method="block",
-            border=HIGHLIGHT_MAIN + "44",
+            border=BACKGROUND_DARK,
             icon_size=0,
             padding_y=3,
             padding_x=6,
