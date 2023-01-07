@@ -1,9 +1,33 @@
-from libqtile.config import Group, Match
+from libqtile.config import Group, Match, ScratchPad, DropDown
 
 from modules.consts import SCREEN_LEFT, SCREEN_MIDDLE, SCREEN_RIGHT
 
 
+GRP_SCRATCHPAD = "scratchpad"
+DD_PASSWORD = "dd_password"
+DD_TERM = "dd_terminal"
+DD_FM = "dd_files"
+
+dd_args = dict(
+    opacity=1,
+    width=0.6,
+    height=0.7,
+    y=0.05,
+    x=0.25,
+    on_focus_lost_hide=True,
+    warp_pointer=True,
+)
+
 groups = [
+    ScratchPad(
+        GRP_SCRATCHPAD,
+        [
+            DropDown(DD_PASSWORD, "keepassxc", **dd_args),
+            DropDown(DD_TERM, "alacritty", **dd_args),
+            DropDown(DD_FM, "thunar", **dd_args),
+        ],
+        single=True
+    ),
     Group(
         name="1",
         label="[1] WEB",
