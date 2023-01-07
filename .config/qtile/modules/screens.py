@@ -3,7 +3,7 @@ import os
 from libqtile import qtile, bar, widget
 from libqtile.config import Screen
 
-from modules.widgets import volume
+# from modules.widgets import volume
 from modules.consts import TERMINAL, WIDGET_SIZE_DEFAULT, \
     WIDGET_SIZE_TWOK, BACKGROUND_DARK, HIGHLIGHT_MAIN, MARGIN, \
     FONT_SIZE_DEFAULT, FONT_SIZE_TWOK
@@ -100,7 +100,7 @@ def create_screen(main=False, twok=False):
             background=BACKGROUND_DARK,
         ),
         spacer,
-        volume,
+        # volume,
         spacer,
         widget.Clock(
             format='%Y-%m-%d %a %I:%M %p',
