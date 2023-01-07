@@ -12,21 +12,22 @@ from modules.consts import TERMINAL, WIDGET_SIZE_DEFAULT, \
 def create_screen(main=False, twok=False):
     WIDGET_SIZE = WIDGET_SIZE_TWOK if twok else WIDGET_SIZE_DEFAULT
     FONT_SIZE = FONT_SIZE_TWOK if twok else FONT_SIZE_DEFAULT
+    background = BACKGROUND_DARK
     spacer = widget.Spacer(
         length=10,
-        background=BACKGROUND_DARK,
+        background=background,
     )
 
     base_widgets = [
         widget.Sep(
             padding=3,
             linewidth=0,
-            background=BACKGROUND_DARK,
+            background=background,
         ),
         widget.Image(
             filename='~/.config/qtile/eos-c.png',
             margin=3,
-            background=BACKGROUND_DARK,
+            background=background,
             mouse_callbacks={
                 'Button1': lambda: qtile.cmd_spawn("rofi -show combi")
             },
@@ -34,7 +35,7 @@ def create_screen(main=False, twok=False):
         widget.Sep(
             padding=4,
             linewidth=0,
-            background=BACKGROUND_DARK,
+            background=background,
         ),
         widget.GroupBox(
             highlight_method='line',
@@ -42,14 +43,14 @@ def create_screen(main=False, twok=False):
             this_current_screen_border=HIGHLIGHT_MAIN,
             active="#ffffff",
             inactive="#848e96",
-            background=BACKGROUND_DARK,
+            background=background,
             fontsize=FONT_SIZE,
         ),
         widget.TextBox(
             text='',
             padding=0,
             fontsize=WIDGET_SIZE,
-            foreground=BACKGROUND_DARK,
+            foreground=background,
         ),
         widget.Prompt(),
         widget.Spacer(
@@ -60,7 +61,7 @@ def create_screen(main=False, twok=False):
             fontsize=FONT_SIZE + 1,
             borderwidth=1,
             highlight_method="block",
-            border=BACKGROUND_DARK,
+            border=background,
             icon_size=0,
             padding_y=3,
             padding_x=6,
@@ -75,11 +76,11 @@ def create_screen(main=False, twok=False):
             text='',
             padding=0,
             fontsize=WIDGET_SIZE,
-            foreground=BACKGROUND_DARK,
+            foreground=background,
         ),
         widget.CurrentLayoutIcon(
             scale=0.75,
-            background=BACKGROUND_DARK,
+            background=background,
         ),
     ]
 
@@ -93,18 +94,18 @@ def create_screen(main=False, twok=False):
                 'Button1':
                 lambda: qtile.cmd_spawn(TERMINAL + ' -e yay -Syu')
             },
-            background=BACKGROUND_DARK,
+            background=background,
         ),
         widget.Systray(
             icon_size=20,
-            background=BACKGROUND_DARK,
+            background=background,
         ),
         spacer,
         # volume,
         spacer,
         widget.Clock(
             format='%Y-%m-%d %a %I:%M %p',
-            background=BACKGROUND_DARK,
+            background=background,
             foreground='#ffffff',
             fontsize=FONT_SIZE + 1,
         ),
@@ -118,7 +119,7 @@ def create_screen(main=False, twok=False):
                 )
             },
             foreground='#e39378',
-            background=BACKGROUND_DARK,
+            background=background,
         ),
         spacer,
     ]
