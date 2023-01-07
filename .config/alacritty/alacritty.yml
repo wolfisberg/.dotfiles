@@ -183,7 +183,8 @@ schemes:
     # Default colors
     primary:
       #background: '0x1a1b26' # original
-      background: '0x1a1b26' # brighter
+      #background: '0x1a1b26' # brighter
+      background: '0x11000a' # purple
       foreground: '0xc9d1f6'
 
     # Normal colors
