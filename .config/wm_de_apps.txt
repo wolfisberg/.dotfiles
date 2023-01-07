@@ -1,0 +1,53 @@
+[window manager]
+qtile
+awesome
+
+[wallpaper]
+feh
+nitrogen
+
+[compositor]
+picom
+compton
+
+[display manager]
+lightdm
+sddm
+
+[display setup]
+arandr
+xrandr
+
+[clipboard manager]
+clipman
+
+[file explorer]
+thunar
+pcmanfm
+dolphin
+
+[system tray]
+trayer
+network-manager-applet (nm-applet)
+volumeicon
+
+[launcher]
+rofi
+
+[utils]
+lxappearance (gtk)
+qt5ct (qt theming)
+bluez (bluetooth)
+
+[policykit]
+lxsession
+
+[terminals]
+xterm
+alacritty
+
+[tuis]
+lazygit
+broot
+ranger
+
