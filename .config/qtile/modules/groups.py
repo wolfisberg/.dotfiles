@@ -11,10 +11,10 @@ DD_TUI_FM = "dd_tui_files"
 
 dd_args = dict(
     opacity=1,
-    width=0.6,
+    width=0.7,
     height=0.7,
     y=0.05,
-    x=0.25,
+    x=0.15,
     on_focus_lost_hide=True,
     warp_pointer=True,
 )
