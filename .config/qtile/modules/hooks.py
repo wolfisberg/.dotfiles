@@ -4,7 +4,7 @@ import subprocess
 from libqtile import hook, qtile
 
 from modules.consts import SCREEN_LEFT
-from modules.layouts import LAYOUT_VERTICAL_TILE, LAYOUT_MONAD_TALL
+from modules.layouts import layouts, LAYOUT_VERTICAL_TILE
 
 
 @hook.subscribe.startup_once
@@ -16,7 +16,29 @@ def autostart():
 @hook.subscribe.setgroup
 def set_layout_per_screen():
     for s in qtile.screens:
+        current_layout = layouts[s.group.current_layout].name
+        set_defaults(s.group)
         if s.index == SCREEN_LEFT:
-            s.group.cmd_setlayout(LAYOUT_VERTICAL_TILE.name)
+            if s.group.prev_screen != SCREEN_LEFT:
+                s.group.prev_layout = current_layout
+            set_layout(s.group, LAYOUT_VERTICAL_TILE.name, False)
         else:
-            s.group.cmd_setlayout(LAYOUT_MONAD_TALL.name)
+            if s.group.prev_screen == SCREEN_LEFT:
+                set_layout(s.group, s.group.prev_layout, False)
+            else:
+                set_layout(s.group, current_layout, True)
+        s.group.prev_screen = s.index
+
+
+def set_defaults(group):
+    if not hasattr(group, "prev_layout"):
+        group.prev_layout = layouts[0].name
+
+    if not hasattr(group, "prev_screen"):
+        group.prev_screen = -1
+
+
+def set_layout(group, layout, remember):
+    group.cmd_setlayout(layout)
+    if remember is True:
+        group.prev_layout = layout
