@@ -1,7 +1,6 @@
 # TODO: rethink group matchings
 # TODO: create spotify scratchpad?
 # TODO: save prev layout when switching to 3 and restore when moving out of 3
-# TODO: make rofi spawn on main monitor only
 # TODO: keys / super / trapped in terminal etc?
 # TODO: alt+tab? (rofi?)
 # TODO: on launching client, focus
