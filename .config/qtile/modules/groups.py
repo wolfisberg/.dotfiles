@@ -65,7 +65,7 @@ groups = [
     Group(
         name="6",
         label="[6] MISC",
-        matches=[Match(wm_class=['keepassxc'])],
+        matches=[Match(wm_class=[])],
         screen_affinity=SCREEN_LEFT,
     ),
     # Group(

@@ -1,5 +1,3 @@
-# TODO: rethink group matchings
-# TODO: create spotify scratchpad?
 # TODO: save prev layout when switching to 3 and restore when moving out of 3
 # TODO: keys / super / trapped in terminal etc?
 # TODO: alt+tab? (rofi?)
