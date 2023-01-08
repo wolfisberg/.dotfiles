@@ -184,7 +184,12 @@ launch_keys = [
         Key([], "k", lazy.spawn("keepassxc"), desc="passwords (keepassxc)"),
     ]),
     Key([MOD], "Return", lazy.spawn(TERMINAL), desc="terminal (alacritty"),
-    Key([MOD], "n", lazy.spawn("rofi -show combi"), desc="rofi menu"),
+    Key(
+        [MOD],
+        "n",
+        lazy.spawn("rofi -show combi -filter '-" + GRP_SCRATCHPAD + " '"),
+        desc="rofi menu"
+    ),
     Key([MOD], "F12", lazy.group[GRP_SCRATCHPAD].dropdown_toggle(DD_PASSWORD)),
     Key([MOD], "F11", lazy.group[GRP_SCRATCHPAD].dropdown_toggle(DD_FM)),
     Key([MOD], "F10", lazy.group[GRP_SCRATCHPAD].dropdown_toggle(DD_TUI_FM)),

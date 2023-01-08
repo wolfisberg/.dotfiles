@@ -3,7 +3,7 @@ from libqtile.config import Group, Match, ScratchPad, DropDown
 from modules.consts import SCREEN_LEFT, SCREEN_MIDDLE, SCREEN_RIGHT
 
 
-GRP_SCRATCHPAD = "scratchpad"
+GRP_SCRATCHPAD = "scratchpad_rofi_ignore"
 DD_PASSWORD = "dd_password"
 DD_TERM = "dd_terminal"
 DD_FM = "dd_files"
