@@ -68,20 +68,4 @@ groups = [
         matches=[Match(wm_class=[])],
         screen_affinity=SCREEN_LEFT,
     ),
-    # Group(
-    #     name="7",
-    #     matches=[],
-    # ),
-    # Group(
-    #     name="8",
-    #     matches=[],
-    # ),
-    # Group(
-    #     name="9",
-    #     matches=[],
-    # ),
-    # Group(
-    #     name="0",
-    #     matches=[],
-    # )
 ]
