@@ -14,13 +14,13 @@ SHFT = "shift"
 CTRL = "control"
 ALT = "mod1"
 
-groups = [g for g in groups_and_scratchpads
-          if type(g).__name__ != "ScratchPad"]
+grps = [g for g in groups_and_scratchpads
+        if type(g).__name__ != "ScratchPad"]
 
 
 def create_gotogroup_keys():
     gotogroupkeys = []
-    for g in groups:
+    for g in grps:
         gotogroupkeys.append(Key(
             [],
             g.name,
@@ -32,7 +32,7 @@ def create_gotogroup_keys():
 
 def create_sendwindowtogroup_keys():
     sendtogroupkeys = []
-    for g in groups:
+    for g in grps:
         sendtogroupkeys.append(Key(
             [],
             g.name,
@@ -44,7 +44,7 @@ def create_sendwindowtogroup_keys():
 
 def create_sendgrouptoscreen_keys(screen):
     keys = []
-    for g in groups:
+    for g in grps:
         keys.append(Key(
             [],
             g.name,
