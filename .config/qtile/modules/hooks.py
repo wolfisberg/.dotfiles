@@ -2,6 +2,7 @@ import os
 import subprocess
 
 from libqtile import hook, qtile
+from libqtile.log_utils import logger
 
 from modules.consts import SCREEN_LEFT
 from modules.layouts import layouts, LAYOUT_VERTICAL_TILE
@@ -11,6 +12,18 @@ from modules.layouts import layouts, LAYOUT_VERTICAL_TILE
 def autostart():
     home = os.path.expanduser('~/.config/qtile/autostart.sh')
     subprocess.call([home])
+
+
+@hook.subscribe.client_name_updated
+async def move_spotify_workaround(window):
+    try:
+        if window.name.lower() == 'spotify':
+            music_group = [g for g in qtile.groups if hasattr(g, "label")
+                           and "music" in g.label.lower()][0]
+            window.togroup(music_group.name)
+            music_group.cmd_toscreen(qtile.current_screen.index)
+    except Exception as e:
+        logger.warning("Failed to move spotify window to group.", e)
 
 
 @hook.subscribe.setgroup
