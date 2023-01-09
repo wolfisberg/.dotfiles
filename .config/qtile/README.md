@@ -9,13 +9,15 @@ Home of the Qtile configuration.
 
 ### Improvements
 * Add some kind of task switcher alt+tab style (rofi?)
-* When launching apps that are matched to a certain group, they appear in the background. Make the get focus instead (on current screen).
 * Set keybind to quickly get rid of a window (minimizing or sending to hidden group). Add a rofi launcher to retrieve the hidden windows. [docs](https://docs.qtile.org/en/latest/manual/ref/commands.html#libqtile.backend.base.Window.toggle_minimize)
 
     ```Key([MOD, CTRL], "space", lazy.layout.minimize(), desc="minimize window")```
 
-* Find a way to ignore scratchpads from `rofi -show window` (see github issue).
 * Find (a collection of) wallpapers for triple monitor setup.
+
+### Workarounds
+* Custom match hook for spotify
+* Scratchpads ignored from `rofi -show window` via predefined filter input (see github issue)
 
 ### Projects
 * Write some kind of service (go, systemd, dbus?), that listens on dbus for "mpris:artUrl" and pulls album covers as wallpapers (`feh` can use urls for wallpapers)
