@@ -46,26 +46,24 @@ groups = [
         name="3",
         label="[3] WRK2",
         # postman, git, dev browser
-        matches=[Match(wm_class=[])],
         screen_affinity=SCREEN_LEFT,
     ),
     Group(
         name="4",
         label="[4] MSG",
         # thunderbird, slack, teams, signal
-        matches=[Match(wm_class=[])],
         screen_affinity=SCREEN_RIGHT,
     ),
     Group(
         name="5",
         label="[5] MUSIC",
-        matches=[Match(wm_class=['spotify'])],
+        # spotify match seems broken for now, see workaround in hooks
+        matches=[Match(wm_class=['Spotify', 'spotify'])],
         screen_affinity=SCREEN_RIGHT,
     ),
     Group(
         name="6",
         label="[6] MISC",
-        matches=[Match(wm_class=[])],
         screen_affinity=SCREEN_LEFT,
     ),
 ]
