@@ -15,7 +15,7 @@ def autostart():
 
 
 @hook.subscribe.client_name_updated
-async def move_spotify_workaround(window):
+def move_spotify_workaround(window):
     try:
         if window.name.lower() == 'spotify':
             music_group = [g for g in qtile.groups if hasattr(g, "label")
